@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
-import { getUser, getUserProjects, getUserPalettes } from "../../utilities/apiCalls";
+import { getUser, getUserProjects, getUserPalettes, postNewUser } from "../../utilities/apiCalls";
 import './App.css';
 
 export class App extends Component {
@@ -59,6 +59,23 @@ userPalettes = async (projects) => {
   }
 };
 
+signUpUser = async (email, password) => {
+  const userInfo = { email, password };
+  try {
+    const userId = await postNewUser(userInfo)
+    if(userId) {
+      this.setState({
+        user: {
+          id: userId,
+          name: email.split('@')[0]
+        }
+      });
+    }
+  } catch (error) {
+    this.setState({ error: error.message })
+  } 
+}
+
   render(){
     const { error, user } = this.state;
     console.log('this.state :', this.state);
@@ -69,6 +86,7 @@ userPalettes = async (projects) => {
       { !user && <LoginForm 
         error={error}
         loginUser={this.loginUser}
+        signUpUser={this.signUpUser}
       /> }
       </>
     )
