@@ -1,4 +1,4 @@
-import { cleanPalettes } from './helpers';
+import { cleanPalettes, generateHexCode} from './helpers';
 
 export const getUser = async (userInfo) => {
   try {
@@ -39,3 +39,23 @@ export const getUserPalettes = async (id) => {
     throw new Error(error.message)
   }
 };
+
+export const postNewUser = async (userInfo) => {
+  try {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userInfo),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch('http://localhost:3001/user/signup', options);
+    if (!response.ok) {
+      throw new Error('Unable to Sign Up');
+    }
+    const result = await response.json();
+    return result.id;
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}

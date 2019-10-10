@@ -13,3 +13,15 @@ export const cleanPalettes = palettes => {
     };
   });
 };
+
+export const generateHexCode = (hexbase = ['#']) => {
+  let hexCodeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
+
+    let index = Math.floor(Math.random() * 15)
+    if (hexbase.length === 7) {
+      return hexbase.join('');
+    } else {
+      hexbase.push(hexCodeValues[index]);
+      return generateHexCode(hexbase);
+    };
+}
