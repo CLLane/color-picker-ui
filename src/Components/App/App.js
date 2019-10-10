@@ -35,7 +35,6 @@ loginUser = async (email, password) => {
 userProjects = async (userId) => {
   try {
     const projects = await getUserProjects(userId);
-    console.log(projects)
     if(projects.length) {
       this.setState({ user_projects: projects});
       this.userPalettes(projects);

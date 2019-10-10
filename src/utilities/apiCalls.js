@@ -1,3 +1,5 @@
+import { cleanPalettes } from './helpers';
+
 export const getUser = async (userInfo) => {
   try {
     const options = {
@@ -32,7 +34,7 @@ export const getUserPalettes = async (id) => {
   try {
     const response = await fetch(`http://localhost:3001/palettes/${id}`);
     const palettes = await response.json();
-    return palettes;
+    return cleanPalettes(palettes);
   } catch (error) {
     throw new Error(error.message)
   }
