@@ -27,11 +27,13 @@ export class LoginForm extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { error } = this.props;
     return (
       <form>
         <input type='text' value={email} placeholder='Email' name='email' onChange={this.handleChange}></input>
         <input type='password' value={password} placeholder='Password' name='password' onChange={this.handleChange}></input>
         <button onClick={this.handleLogin}>Login</button>
+        { error && <p>Login failed, please re-enter information.</p>}
       </form>
     )
   }
