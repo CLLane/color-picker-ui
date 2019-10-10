@@ -28,21 +28,37 @@ loginUser = async (email, password) => {
       this.userProjects(userId);
     }
   } catch (error) {
-    this.setState({error: error.message})
+    this.setState({ error: error.message });
   }
 };
 
-userProjects = async(userId) => {
+userProjects = async (userId) => {
   try {
     const projects = await getUserProjects(userId);
     console.log(projects)
     if(projects.length) {
-      this.setState({ user_projects: projects})
+      this.setState({ user_projects: projects});
+      this.userPalettes(projects);
     }
   } catch (error) {
-    this.setState({error: error.message})
+    this.setState({ error: error.message });
   }
 }
+
+userPalettes = async (projects) => {
+  try {
+    let palettePromises = projects.map(async project => {
+      const { id } = project;
+      console.log('map id', id)
+      const palette = await getUserPalettes(id);
+      return palette;
+    });
+    const palettes = await Promise.all(palettePromises);
+    this.setState({user_palettes: palettes.flat()});
+  } catch (error) {
+    this.setState({ error: error.message });
+  }
+};
 
   render(){
     const { error, user } = this.state;
