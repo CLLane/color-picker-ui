@@ -80,15 +80,16 @@ signUpUser = async (email, password) => {
     const { error, user } = this.state;
     console.log('this.state :', this.state);
     return (
-      <>
-      { user && <h1>Hey, { user.name }</h1> }
-      { !user && <h1> Color Picker </h1> }
+      <main>
+        { user && <h1>Welcome, { user.name }</h1> }
+        <img src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png" alt="graffiti-fonts" border="0"/>
+        {!user && <img src="https://fontmeme.com/permalink/191011/986cec0ee62e1c276228d73cd566bdd2.png" alt="graffiti-fonts" border="0"/> }
       { !user && <LoginForm 
         error={error}
         loginUser={this.loginUser}
         signUpUser={this.signUpUser}
       /> }
-      </>
+      </main>
     )
   }
 }
