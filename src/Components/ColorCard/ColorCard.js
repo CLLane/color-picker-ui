@@ -5,11 +5,12 @@ export const ColorCard = ({ card, toggleColorLock}) => {
   let cardStyle = {
     background: card.color
   }
+
+  const lockImage = card.locked ? 'Unlock' : 'Lock'
   return (
     <article style={cardStyle}>
-      {card.locked && <button onClick={() => toggleColorLock(card.index)}>Unlock</button>}
-      {!card.locked && <button onClick={() => toggleColorLock(card.index)}>Lock</button>}
-      <input type='text' placeholder={ card.color }></input>
+      <button onClick={() => toggleColorLock(card.index)}>{ lockImage }</button>
+      <input disabled='true' type='text' placeholder={ card.color }></input>
     </article>
   )
 }

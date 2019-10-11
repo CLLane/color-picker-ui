@@ -99,6 +99,10 @@ export class App extends Component {
     this.setState({ colors });
   };
 
+  inputHexCode = (index) => {
+    
+  }
+
   toggleColorLock = (index) => {
     let { colors } = this.state;
     colors[index].locked = !colors[index].locked;
