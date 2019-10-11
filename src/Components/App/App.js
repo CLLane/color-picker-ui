@@ -99,6 +99,12 @@ export class App extends Component {
     this.setState({ colors });
   };
 
+  toggleColorLock = (index) => {
+    let { colors } = this.state;
+    colors[index].locked = !colors[index].locked;
+    this.setState({ colors })
+  }
+
   render() {
     const { error, user, colors } = this.state;
     console.log("this.state :", this.state);
@@ -128,6 +134,7 @@ export class App extends Component {
           <ColorContainer
             colors={colors}
             generateColors={this.generateColors}
+            toggleColorLock={this.toggleColorLock}
           />
         )}
       </main>

@@ -1,13 +1,15 @@
 import React from 'react';
 import './ColorCard.css';
 
-export const ColorCard = ({ card }) => {
+export const ColorCard = ({ card, toggleColorLock}) => {
   let cardStyle = {
     background: card.color
   }
   return (
     <article style={cardStyle}>
-      hi
+      {card.locked && <button onClick={() => toggleColorLock(card.index)}>Unlock</button>}
+      {!card.locked && <button onClick={() => toggleColorLock(card.index)}>Lock</button>}
+      <input type='text' placeholder={ card.color }></input>
     </article>
   )
 }
