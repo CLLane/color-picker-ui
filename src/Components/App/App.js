@@ -99,9 +99,6 @@ export class App extends Component {
     this.setState({ colors });
   };
 
-  inputHexCode = (index) => {
-    
-  }
 
   toggleColorLock = (index) => {
     let { colors } = this.state;
