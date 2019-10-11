@@ -1,0 +1,25 @@
+.sign-in_form {
+  min-height: 30vh;
+  display: flex;
+  padding-left: 33%;
+  padding-right: 33%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    height: 43px;
+    background: rgba(167, 241, 253, 0.95);
+  }
+
+
+input {
+    border: none;
+    border-radius: 10px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+}
