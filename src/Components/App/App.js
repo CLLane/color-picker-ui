@@ -12,7 +12,7 @@ import { ColorContainer } from "../ColorContainer/ColorContainer";
 import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import  ProjectForm  from "../ProjectForm/ProjectForm";
-import { ProjectsContainer } from "../ProjectsContainer/ProjectsContainer";
+import  ProjectsContainer  from "../ProjectsContainer/ProjectsContainer";
 
 export class App extends Component {
   constructor() {
@@ -136,7 +136,7 @@ export class App extends Component {
 
 
   render() {
-    const { error, user, colors, user_projects } = this.state;
+    const { error, user, colors, user_projects, user_palettes } = this.state;
     console.log("this.state :", this.state);
     return (
       <main>

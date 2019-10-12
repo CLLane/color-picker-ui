@@ -15,4 +15,4 @@ export const ProjectsContainer = ({ projects, palettes }) => {
   )
 }
 
-export default ProjectsContainter;
+export default ProjectsContainer;
