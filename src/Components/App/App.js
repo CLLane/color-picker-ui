@@ -110,13 +110,17 @@ export class App extends Component {
   };
 
   handleSubmission = async (projectInfo, paletteName) => {
-    const { colors } = this.state;
+    const { colors, user } = this.state;
+    const hex_codes = colors.map(colorObj => colorObj.color).join();
     if(projectInfo.id) {
-      const hex_codes = colors.map(colorObj => colorObj.color).join();
       const newPalette = { project_id: projectInfo.id, hex_codes, name: paletteName };
-      const paletteId = await this.createPalette(newPalette);
-      console.log('created Palette', paletteId);
+      await this.createPalette(newPalette);
+    } else {
+      const project_id = await this.createProject({ user_id: user.id, name: projectInfo });
+      const newPalette = { project_id, hex_codes, name: paletteName };
+      await this.createPalette(newPalette);
     }
+    this.userProjects(user.id);
   }
 
   createProject = async (projectInfo) => {
