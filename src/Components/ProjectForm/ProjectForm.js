@@ -57,3 +57,5 @@ export class ProjectForm extends Component {
     )
   }
 }
+
+export default ProjectForm;
