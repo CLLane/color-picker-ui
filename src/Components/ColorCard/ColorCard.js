@@ -10,7 +10,7 @@ export const ColorCard = ({ card, toggleColorLock}) => {
   return (
     <article style={cardStyle}>
       <button onClick={() => toggleColorLock(card.index)}>{ lockImage }</button>
-      <input disabled='true' type='text' placeholder={ card.color }></input>
+      <input disabled={true} type='text' placeholder={ card.color }></input>
     </article>
   )
 }
