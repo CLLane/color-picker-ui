@@ -7,7 +7,7 @@ export class ProjectForm extends Component {
     this.state = {
       project: null,
       palette: null,
-      new_project: true,
+      new_project: false,
       project_save: '',
       palette_save: '' 
     }
@@ -16,12 +16,17 @@ export class ProjectForm extends Component {
   selectProject = (value) => {
     const { projects } = this.props;
     let currentProject = projects.find(project => project.name === value);
-    this.setState({ project: currentProject, new_project: false })
+    if ( currentProject ) {
+      this.setState({ project: currentProject, new_project: true })
+    } else {
+      this.setState({ project: null, new_project: false})
+    }
   }
 
   render() {
     const { projects } = this.props;
-    const { new_project } = this.state;
+    const { new_project, project } = this.state;
+    const placeholderText = !new_project ? 'Enter Project Name' : project.name
     const options = projects.map( project => {
       return <option value={project.name}>{project.name}</option>
     })
@@ -31,7 +36,7 @@ export class ProjectForm extends Component {
           <option value='new-project'>Create New Project</option>
           { options }
         </select>
-        <input type='text' disabled={new_project} name='project-name'></input>
+        <input type='text' disabled={new_project} name='project-name' placeholder={ placeholderText }></input>
       </form>
     )
   }
