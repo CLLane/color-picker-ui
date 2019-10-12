@@ -9,6 +9,7 @@ import {
 import { ColorContainer } from "../ColorContainer/ColorContainer";
 import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
+import { ProjectForm } from "../ProjectForm/ProjectForm";
 
 export class App extends Component {
   constructor() {
@@ -107,7 +108,7 @@ export class App extends Component {
   }
 
   render() {
-    const { error, user, colors } = this.state;
+    const { error, user, colors, user_projects } = this.state;
     console.log("this.state :", this.state);
     return (
       <main>
@@ -131,13 +132,18 @@ export class App extends Component {
             signUpUser={this.signUpUser}
           />
         )}
-        {user && (
+        {user && 
           <ColorContainer
             colors={colors}
             generateColors={this.generateColors}
             toggleColorLock={this.toggleColorLock}
+        /> }
+        {user 
+          &&
+          <ProjectForm 
+            projects={user_projects}
           />
-        )}
+        }
       </main>
     );
   }
