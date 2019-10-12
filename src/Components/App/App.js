@@ -4,7 +4,9 @@ import {
   getUser,
   getUserProjects,
   getUserPalettes,
-  postNewUser
+  postNewUser,
+  postNewProject,
+  postNewPalette
 } from "../../utilities/apiCalls";
 import { ColorContainer } from "../ColorContainer/ColorContainer";
 import { generateHexCode } from "../../utilities/helpers";
@@ -105,7 +107,28 @@ export class App extends Component {
     let { colors } = this.state;
     colors[index].locked = !colors[index].locked;
     this.setState({ colors })
+  };
+
+  handleSubmission = async (projectInfo, paletteName) => {
+    const { colors } = this.state;
+    if(projectInfo.id) {
+      const hex_codes = colors.map(colorObj => colorObj.color).join();
+      const newPalette = { project_id: projectInfo.id, hex_codes, name: paletteName };
+      const paletteId = await this.createPalette(newPalette);
+      console.log('created Palette', paletteId);
+    }
   }
+
+  createProject = async (projectInfo) => {
+    const projectId = await postNewProject(projectInfo);
+    return projectId;
+  }
+
+  createPalette = async (paletteInfo) => {
+    const paletteId = await postNewPalette(paletteInfo);
+    return paletteId;
+  }
+
 
   render() {
     const { error, user, colors, user_projects } = this.state;
@@ -141,6 +164,7 @@ export class App extends Component {
         {user 
           &&
           <ProjectForm 
+            handleSubmission={this.handleSubmission}
             projects={user_projects}
           />
         }
