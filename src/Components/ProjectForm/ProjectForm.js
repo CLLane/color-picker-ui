@@ -37,7 +37,8 @@ export class ProjectForm extends Component {
   render() {
     const { projects } = this.props;
     const { isExistingProject, projectToSave, paletteToSave } = this.state;
-    const placeholderText = !isExistingProject ? 'Enter Project Name' : projectToSave.name
+    const projectPlaceholderText = isExistingProject ? projectToSave.name : 'Enter Project Name';
+    const projectNameValue = isExistingProject ? '' : projectToSave.name;
     const options = projects.map((project, index) => {
       return <option key={index} value={project.name}>{project.name}</option>
     });
@@ -47,7 +48,7 @@ export class ProjectForm extends Component {
           <option value='new-project'>Create New Project</option>
           { options }
         </select>
-        <input type='text' disabled={isExistingProject} name='projectToSave' placeholder={ placeholderText } onChange={this.handleNameChange}></input>
+        <input type='text' disabled={isExistingProject} name='projectToSave' placeholder={ projectPlaceholderText } onChange={this.handleNameChange} value={projectNameValue}></input>
         <input type='text' placeholder='Enter Palette Name' name='paletteToSave' onChange={this.handleNameChange} value={paletteToSave}></input>
         <button onClick={this.handleSubmit}>Save</button>
       </form>
