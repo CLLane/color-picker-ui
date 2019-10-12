@@ -1,10 +1,11 @@
 export const cleanPalettes = palettes => {
   return palettes.map(palette => {
-    const { id, project_id } = palette;
+    const { id, project_id, name } = palette;
     let hexCodes = palette.hex_codes.split(',');
     return {
       id, 
       project_id,
+      name,
       colorOne: hexCodes[0],
       colorTwo: hexCodes[1],
       colorThree: hexCodes[2],
