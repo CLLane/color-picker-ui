@@ -32,15 +32,15 @@ export class ProjectForm extends Component {
     const { projectToSave, paletteToSave } = this.state;
     const { handleSubmission } = this.props;
     await handleSubmission(projectToSave, paletteToSave);
-    projectToSave.name ? this.setState({ selectValue: projectToSave.name, isExitingProject: true}) : this.setState({ selectValue: projectToSave, isExistingProject: true});
-    this.setState({ projectToSave: "", paletteToSave: ""});
+    const nameValue = projectToSave.name ? projectToSave.name : projectToSave;
+    this.setState({ selectValue: nameValue, isExistingProject: true, paletteToSave: "" })
   }
 
   render() {
     const { projects } = this.props;
     const { isExistingProject, projectToSave, paletteToSave, selectValue } = this.state;
     const projectPlaceholderText = isExistingProject ? projectToSave.name : 'Enter Project Name';
-    const projectNameValue = isExistingProject ? projectToSave.name : projectToSave;
+    const projectNameValue = projectToSave.name ? projectToSave.name : projectToSave;
     const options = projects.map((project, index) => {
       return <option key={index} value={project.name}>{project.name}</option>
     })
