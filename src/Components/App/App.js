@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import LoginForm from "../LoginForm/LoginForm";
-import {
-  getUser,
-  getUserProjects,
-  getUserPalettes,
-  postNewUser,
-  postNewProject,
-  postNewPalette
-} from "../../utilities/apiCalls";
 import { ColorContainer } from "../ColorContainer/ColorContainer";
 import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import  ProjectForm  from "../ProjectForm/ProjectForm";
 import  ProjectsContainer  from "../ProjectsContainer/ProjectsContainer";
 import { Route, Redirect } from 'react-router-dom';
+import {
+  getUser,
+  getUserProjects,
+  getUserPalettes,
+  postNewUser,
+  postNewProject,
+  postNewPalette,
+  deletePalette
+} from "../../utilities/apiCalls";
 
 export class App extends Component {
   constructor() {
@@ -139,6 +140,16 @@ export class App extends Component {
     this.setState({user: null})
   }
 
+  trashPalette = async (id) => {
+    const { user } = this.state;
+    try {
+      await deletePalette(id);
+      await this.userProjects(user.id);
+    } catch (error) {
+      this.setState({error: error.message})
+    }
+  }
+
 
   render() {
     const { error, user, colors, user_projects, user_palettes } = this.state;
@@ -180,6 +191,7 @@ export class App extends Component {
             <ProjectsContainer 
               projects={user_projects}
               palettes={user_palettes}
+              trashPalette={this.trashPalette}
             />
             </>
           )

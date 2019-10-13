@@ -99,3 +99,21 @@ export const postNewPalette = async (paletteInfo) => {
     throw new Error (error.message)
   }
 };
+
+export const deletePalette = async (id) => {
+  try { 
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await fetch(`http://localhost:3001/palettes/${id}`, options);
+    if (!response.ok) {
+      throw new Error('Unable to delete Palette');
+    } 
+    return response;
+  } catch (error) {
+    throw new Error (error.message)
+  }
+};
