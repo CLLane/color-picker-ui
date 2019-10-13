@@ -13,6 +13,7 @@ import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import  ProjectForm  from "../ProjectForm/ProjectForm";
 import  ProjectsContainer  from "../ProjectsContainer/ProjectsContainer";
+import { Route, Redirect } from 'react-router-dom';
 
 export class App extends Component {
   constructor() {
@@ -134,51 +135,55 @@ export class App extends Component {
     return paletteId;
   }
 
+  logoutUser = () => {
+    this.setState({user: null})
+  }
+
 
   render() {
     const { error, user, colors, user_projects, user_palettes } = this.state;
     console.log("this.state :", this.state);
     return (
       <main>
-        {user && <h1>Welcome, {user.name}</h1>}
-        <img
-          src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
-          alt="graffiti-fonts"
-          border="0"
-        />
-        {!user && (
-          <img
-            src="https://fontmeme.com/permalink/191011/986cec0ee62e1c276228d73cd566bdd2.png"
-            alt="graffiti-fonts"
-            border="0"
-          />
-        )}
-        {!user && (
-          <LoginForm
-            error={error}
-            loginUser={this.loginUser}
-            signUpUser={this.signUpUser}
-          />
-        )}
-        {user && 
-          <ColorContainer
-            colors={colors}
-            generateColors={this.generateColors}
-            toggleColorLock={this.toggleColorLock}
-        /> }
-        {user 
-          &&
-          <ProjectForm 
-            handleSubmission={this.handleSubmission}
-            projects={user_projects}
-          />
-        }
-        {user && 
-          <ProjectsContainer 
-            projects={user_projects}
-            palettes={user_palettes}
-          />
-        }
+        <Route path='/login' render={() => user ? <Redirect to='/'/> : (
+          <>
+            <img
+              src="https://fontmeme.com/permalink/191011/986cec0ee62e1c276228d73cd566bdd2.png"
+              alt="graffiti-fonts"
+              border="0"
+            />
+            <LoginForm
+              error={error}
+              loginUser={this.loginUser}
+              signUpUser={this.signUpUser}
+            />
+          </>
+          )}/>
+        <Route exact path='/' render={() => !user ? <Redirect to='/login' /> : (
+            <>
+            <h1>Welcome, {user.name}</h1>
+            <button onClick={this.logoutUser}>Log Out</button>
+            <img
+              src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+              alt="graffiti-fonts"
+              border="0"
+            />
+            <ColorContainer
+              colors={colors}
+              generateColors={this.generateColors}
+              toggleColorLock={this.toggleColorLock}
+            /> 
+            <ProjectForm 
+              handleSubmission={this.handleSubmission}
+              projects={user_projects}
+            />
+            <ProjectsContainer 
+              projects={user_projects}
+              palettes={user_palettes}
+            />
+            </>
+          )
+        } />
       </main>
     );
   }
