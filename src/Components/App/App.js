@@ -13,7 +13,8 @@ import {
   postNewUser,
   postNewProject,
   postNewPalette,
-  deletePalette
+  deletePalette,
+  deleteProject
 } from "../../utilities/apiCalls";
 
 export class App extends Component {
@@ -56,10 +57,8 @@ export class App extends Component {
   userProjects = async userId => {
     try {
       const projects = await getUserProjects(userId);
-      if (projects.length) {
-        this.setState({ user_projects: projects });
-        this.userPalettes(projects);
-      }
+      this.setState({ user_projects: projects });
+      this.userPalettes(projects);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -150,6 +149,20 @@ export class App extends Component {
     }
   }
 
+  trashProject = async (id) => {
+    const { user } = this.state;
+    try {
+      await deleteProject(id);
+      await this.userProjects(user.id);
+    } catch (error) {
+      this.setState({error: error.message})
+    }
+  }
+
+  clearError = () => {
+    this.setState({ error: '' });
+  }
+
 
   render() {
     const { error, user, colors, user_projects, user_palettes } = this.state;
@@ -165,6 +178,7 @@ export class App extends Component {
             />
             <LoginForm
               error={error}
+              clearError={this.clearError}
               loginUser={this.loginUser}
               signUpUser={this.signUpUser}
             />
@@ -192,6 +206,7 @@ export class App extends Component {
               projects={user_projects}
               palettes={user_palettes}
               trashPalette={this.trashPalette}
+              trashProject={this.trashProject}
             />
             </>
           )

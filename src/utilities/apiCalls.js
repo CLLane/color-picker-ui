@@ -117,3 +117,21 @@ export const deletePalette = async (id) => {
     throw new Error (error.message)
   }
 };
+
+export const deleteProject = async (id) => {
+  try { 
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await fetch(`http://localhost:3001/projects/${id}`, options);
+    if (!response.ok) {
+      throw new Error('Unable to delete Project');
+    } 
+    return response;
+  } catch (error) {
+    throw new Error (error.message)
+  }
+};
