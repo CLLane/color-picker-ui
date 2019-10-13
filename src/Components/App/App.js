@@ -117,13 +117,18 @@ export class App extends Component {
     if(projectInfo.id) {
       const newPalette = { project_id: projectInfo.id, hex_codes, name: paletteName };
       await this.createPalette(newPalette);
+      this.userProjects(user.id);
+      return projectInfo.id;
     } else {
       const project_id = await this.createProject({ user_id: user.id, name: projectInfo });
       const newPalette = { project_id, hex_codes, name: paletteName };
       await this.createPalette(newPalette);
+      this.userProjects(user.id);
+      return project_id;
     }
-    this.userProjects(user.id);
   }
+
+
 
   createProject = async (projectInfo) => {
     const projectId = await postNewProject(projectInfo);

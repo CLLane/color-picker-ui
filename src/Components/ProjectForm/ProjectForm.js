@@ -31,9 +31,10 @@ export class ProjectForm extends Component {
     e.preventDefault();
     const { projectToSave, paletteToSave } = this.state;
     const { handleSubmission } = this.props;
-    await handleSubmission(projectToSave, paletteToSave);
+    const projectId = await handleSubmission(projectToSave, paletteToSave);
     const nameValue = projectToSave.name ? projectToSave.name : projectToSave;
-    this.setState({ selectValue: nameValue, isExistingProject: true, paletteToSave: "" })
+    const currentProject = { name: nameValue, id: projectId}
+    this.setState({ selectValue: nameValue, isExistingProject: true, paletteToSave: "", projectToSave: currentProject });
   }
 
   render() {
@@ -45,7 +46,6 @@ export class ProjectForm extends Component {
       return <option key={index} value={project.name}>{project.name}</option>
     });
     const saveIsDisabled = projectToSave === '' || paletteToSave === '';
-    console.log(saveIsDisabled)
     return (
       <form>
         <select value={selectValue} onChange={(e) => this.selectProject(e.target.value)}>
