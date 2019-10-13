@@ -43,7 +43,9 @@ export class ProjectForm extends Component {
     const projectNameValue = projectToSave.name ? projectToSave.name : projectToSave;
     const options = projects.map((project, index) => {
       return <option key={index} value={project.name}>{project.name}</option>
-    })
+    });
+    const saveIsDisabled = projectToSave === '' || paletteToSave === '';
+    console.log(saveIsDisabled)
     return (
       <form>
         <select value={selectValue} onChange={(e) => this.selectProject(e.target.value)}>
@@ -52,7 +54,7 @@ export class ProjectForm extends Component {
         </select>
         <input type='text' disabled={isExistingProject} name='projectToSave' placeholder={ projectPlaceholderText } onChange={this.handleNameChange} value={projectNameValue}></input>
         <input type='text' placeholder='Enter Palette Name' name='paletteToSave' onChange={this.handleNameChange} value={paletteToSave}></input>
-        <button onClick={this.handleSubmit}>Save</button>
+        <button disabled={saveIsDisabled} onClick={this.handleSubmit}>Save</button>
       </form>
     )
   }
