@@ -2,9 +2,9 @@ import React from 'react';
 import PaletteCard from '../PaletteCard/PaletteCard';
 import './ProjectCard.css';
 
-export const ProjectCard = ({ project, palettes, trashPalette, trashProject }) => {
+export const ProjectCard = ({ project, palettes, trashPalette, trashProject, showPalette }) => {
   const paletteCards = palettes.map((palette, index) => {
-    return <PaletteCard key={index} palette={palette} trashPalette={trashPalette} />
+    return <PaletteCard key={index} palette={palette} trashPalette={trashPalette} showPalette={showPalette} />
   })
 
   return (
