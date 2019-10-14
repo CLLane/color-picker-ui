@@ -4,7 +4,6 @@ import './PaletteCard.css';
 
 export const PaletteCard = ({ palette, trashPalette }) => {
   const colors = Object.values(palette).slice(2)
-  console.log('palette', palette)
   const swatch = colors.map((hex, index) => {
     const divStyle = {
       background: hex,
