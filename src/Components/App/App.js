@@ -5,7 +5,8 @@ import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import  ProjectForm  from "../ProjectForm/ProjectForm";
 import  ProjectsContainer  from "../ProjectsContainer/ProjectsContainer";
-import { Route, Redirect } from 'react-router-dom';
+import PaletteContainer from "../PaletteContainer/PaletteContainer";
+import { Route, Redirect, Link } from 'react-router-dom';
 import {
   getUser,
   getUserProjects,
@@ -14,7 +15,8 @@ import {
   postNewProject,
   postNewPalette,
   deletePalette,
-  deleteProject
+  deleteProject,
+  getAllPalettes
 } from "../../utilities/apiCalls";
 
 export class App extends Component {
@@ -33,7 +35,8 @@ export class App extends Component {
       user: null,
       user_projects: [],
       user_palettes: [],
-      currentProjec: null
+      currentProjec: null,
+      palettes: []
     };
   }
 
@@ -113,8 +116,6 @@ export class App extends Component {
 
   handleSubmission = async (projectName, paletteName) => {
     const { colors, user, currentProject, user_projects } = this.state;
-    console.log('user projects', user_projects);
-    console.log('boolean', user_projects.map(project => project.name).includes(projectName));
     const hex_codes = colors.map(colorObj => colorObj.color).join();
     if(user_projects.map(project => project.name).includes(projectName)) {
       const newPalette = { project_id: currentProject.id, hex_codes, name: paletteName };
@@ -163,6 +164,15 @@ export class App extends Component {
     }
   }
 
+  allPalettes = async () => {
+    try {
+      const palettes = await getAllPalettes();
+      this.setState({ palettes })
+    } catch (error) {
+      this.setState({ error: error.message })
+    }
+  }
+
   clearError = () => {
     this.setState({ error: '' });
   }
@@ -172,7 +182,7 @@ export class App extends Component {
   }
 
   render() {
-    const { error, user, colors, user_projects, user_palettes, currentProject } = this.state;
+    const { error, user, colors, user_projects, user_palettes, currentProject, palettes} = this.state;
     return (
       <main>
         <Route path='/login' render={() => user ? <Redirect to='/'/> : (
@@ -194,6 +204,7 @@ export class App extends Component {
             <>
             <h1>Welcome, {user.name}</h1>
             <button onClick={this.logoutUser}>Log Out</button>
+            <Link to='/palettes'><button onClick={this.allPalettes}>Browse All Palettes</button></Link>
             <img
               src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
               alt="graffiti-fonts"
@@ -204,6 +215,34 @@ export class App extends Component {
               generateColors={this.generateColors}
               toggleColorLock={this.toggleColorLock}
             /> 
+            <ProjectForm 
+              updateCurrentProject={this.updateCurrentProject}
+              currentProject={currentProject}
+              handleSubmission={this.handleSubmission}
+              projects={user_projects}
+            />
+            <ProjectsContainer 
+              projects={user_projects}
+              palettes={user_palettes}
+              trashPalette={this.trashPalette}
+              trashProject={this.trashProject}
+            />
+            </>
+          )
+        } />
+         <Route exact path='/palettes' render={() => !user ? <Redirect to='/login' /> : (
+            <>
+            <h1>Welcome, {user.name}</h1>
+            <button onClick={this.logoutUser}>Log Out</button>
+            <Link to='/'><button >Generate New Palette</button></Link>
+            <img
+              src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+              alt="graffiti-fonts"
+              border="0"
+            />
+            <PaletteContainer 
+              palettes={palettes}
+            />
             <ProjectForm 
               updateCurrentProject={this.updateCurrentProject}
               currentProject={currentProject}

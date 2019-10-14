@@ -7,11 +7,8 @@ export const PaletteCard = ({ palette, trashPalette }) => {
   const swatch = colors.map((hex, index) => {
     const divStyle = {
       background: hex,
-      minHeight: '5vh',
-      minWidth: '5vh',
-      maxHeight: '5vh',
-      maxWidth: '5vh'
-      
+      height: '5vh',
+      width: '5vh',
     }
     return <div style={divStyle} key={index}></div>
   })

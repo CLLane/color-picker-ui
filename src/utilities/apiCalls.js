@@ -40,6 +40,16 @@ export const getUserPalettes = async (id) => {
   }
 };
 
+export const getAllPalettes = async () => {
+  try {
+    const response = await fetch('http://localhost:3001/palettes');
+    const result = await response.json()
+    return cleanPalettes(result)
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
+
 export const postNewUser = async (userInfo) => {
   try {
     const options = {
