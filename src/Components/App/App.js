@@ -297,18 +297,6 @@ export class App extends Component {
                   palettes={palettes}
                   grabPalette={this.grabPalette}
                 />
-                {/* <ProjectForm 
-              updateCurrentProject={this.updateCurrentProject}
-              currentProject={currentProject}
-              handleSubmission={this.handleSubmission}
-              projects={user_projects}
-            />
-            <ProjectsContainer 
-              projects={user_projects}
-              palettes={user_palettes}
-              trashPalette={this.trashPalette}
-              trashProject={this.trashProject}
-            /> */}
               </>
             )
           }
