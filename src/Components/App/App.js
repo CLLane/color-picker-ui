@@ -17,7 +17,8 @@ import {
   deletePalette,
   deleteProject,
   getAllPalettes,
-  editProjectName
+  editProjectName,
+  editPaletteName
 } from "../../utilities/apiCalls";
 
 export class App extends Component {
@@ -205,7 +206,14 @@ export class App extends Component {
     const newProject = await editProjectName(project);
     const updated_projects = user_projects.map(project => project.id === newProject.id ? newProject : project);
     this.setState({ user_projects: updated_projects });
-  }
+  };
+
+  updatePaletteName = async palette => {
+    const { user_palettes } = this.state;
+    const newPalette = await editPaletteName(palette);
+    const updated_palettes = user_palettes.map(palette => palette.id === newPalette.id ? newPalette: palette);
+    this.setState({ user_palettes: updated_palettes });
+  };
 
   render() {
     const {
@@ -274,6 +282,7 @@ export class App extends Component {
                 />
                 <ProjectsContainer
                   updateProjectName={this.updateProjectName}
+                  updatePaletteName={this.updatePaletteName}
                   projects={user_projects}
                   palettes={user_palettes}
                   trashPalette={this.trashPalette}

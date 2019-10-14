@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './PaletteCard.css';
 import { Link } from 'react-router-dom';
 
 
-export const PaletteCard = ({ palette, trashPalette, grabPalette, showPalette}) => {
+export class PaletteCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nameInput: props.palette.name,
+      disabled: true,
+      error: ''
+    }
+  }
+
+  editName = () => {
+    this.setState({ disabled: false });
+  };
+
+  saveName = async () => {
+    const { palette, updatePaletteName } = this.props;
+    const { nameInput } = this.state;
+    const newPalette = {
+      ...palette,
+      name: nameInput
+    };
+    updatePaletteName(newPalette);
+    this.setState({ disabled: true});
+  };
+
+  handleChange = (e) => {
+    this.setState({ nameInput: e.target.value})
+  };
+
+
+  render() {
+  const { palette, trashPalette, grabPalette, showPalette } = this.props;
+  const { nameInput, disabled, error } = this.state;
   const colors = Object.values(palette).slice(2)
   const swatch = colors.map((hex, index) => {
     const divStyle = {
@@ -13,10 +45,12 @@ export const PaletteCard = ({ palette, trashPalette, grabPalette, showPalette}) 
     }
     return <div style={divStyle} key={index}></div>
   })
-
-  return (
+      return (
     <div>
-      <h4>{palette.name}</h4>
+      { error && <p>{error}</p> }
+        <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
+      { disabled && <p onClick={this.editName}>Edit</p> } 
+      { !disabled && <p onClick={this.saveName}>Save</p> }
       <div>{swatch}</div>
       {grabPalette && (
         <Link to="/">
@@ -31,6 +65,7 @@ export const PaletteCard = ({ palette, trashPalette, grabPalette, showPalette}) 
       )}
     </div>
   );
+  }
 }
 
 export default PaletteCard;
