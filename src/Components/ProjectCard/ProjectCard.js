@@ -34,10 +34,10 @@ export class ProjectCard extends Component {
 
 
   render() {
-    const { project, palettes, trashPalette, trashProject, showPalette } = this.props;
+    const { project, palettes, trashPalette, trashProject, showPalette, updatePaletteName} = this.props;
     const { disabled, nameInput, error } = this.state;
     const paletteCards = palettes.map((palette, index) => {
-      return <PaletteCard key={index} palette={palette} trashPalette={trashPalette} showPalette={showPalette} />
+      return <PaletteCard key={index} palette={palette} trashPalette={trashPalette} showPalette={showPalette} updatePaletteName={updatePaletteName} />
     });
 
     return (

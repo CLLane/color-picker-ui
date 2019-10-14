@@ -165,3 +165,23 @@ export const editProjectName = async (project) => {
     throw new Error (error.message)
   }
 };
+
+export const editPaletteName = async (palette) => {
+  try { 
+    const options = {
+      method: 'PATCH',
+      body: JSON.stringify(palette),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await fetch(`http://localhost:3001/palettes/${palette.id}`, options);
+    if (!response.ok) {
+      throw new Error('Unable to edit Palette');
+    } 
+    const result = await response.json();
+    return cleanPalettes([result])[0];
+  } catch (error) {
+    throw new Error (error.message)
+  }
+};
