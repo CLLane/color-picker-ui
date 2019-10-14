@@ -134,4 +134,5 @@ export const deleteProject = async (id) => {
   } catch (error) {
     throw new Error (error.message)
   }
+  
 };
