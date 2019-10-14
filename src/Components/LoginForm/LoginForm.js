@@ -12,6 +12,8 @@ export class LoginForm extends Component {
   }
   
   handleChange = e => {
+    const { clearError } = this.props;
+    clearError();
     this.setState({ [e.target.name]: e.target.value });
   }
 

@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import LoginForm from "../LoginForm/LoginForm";
-import {
-  getUser,
-  getUserProjects,
-  getUserPalettes,
-  postNewUser,
-  postNewProject,
-  postNewPalette
-} from "../../utilities/apiCalls";
 import { ColorContainer } from "../ColorContainer/ColorContainer";
 import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import  ProjectForm  from "../ProjectForm/ProjectForm";
 import  ProjectsContainer  from "../ProjectsContainer/ProjectsContainer";
 import { Route, Redirect } from 'react-router-dom';
+import {
+  getUser,
+  getUserProjects,
+  getUserPalettes,
+  postNewUser,
+  postNewProject,
+  postNewPalette,
+  deletePalette,
+  deleteProject
+} from "../../utilities/apiCalls";
 
 export class App extends Component {
   constructor() {
@@ -30,7 +32,8 @@ export class App extends Component {
       ],
       user: null,
       user_projects: [],
-      user_palettes: []
+      user_palettes: [],
+      currentProjec: null
     };
   }
 
@@ -55,10 +58,8 @@ export class App extends Component {
   userProjects = async userId => {
     try {
       const projects = await getUserProjects(userId);
-      if (projects.length) {
-        this.setState({ user_projects: projects });
-        this.userPalettes(projects);
-      }
+      this.setState({ user_projects: projects });
+      this.userPalettes(projects);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -68,7 +69,6 @@ export class App extends Component {
     try {
       let palettePromises = projects.map(async project => {
         const { id } = project;
-        console.log("map id", id);
         const palette = await getUserPalettes(id);
         return palette;
       });
@@ -111,18 +111,21 @@ export class App extends Component {
     this.setState({ colors })
   };
 
-  handleSubmission = async (projectInfo, paletteName) => {
-    const { colors, user } = this.state;
+  handleSubmission = async (projectName, paletteName) => {
+    const { colors, user, currentProject, user_projects } = this.state;
+    console.log('user projects', user_projects);
+    console.log('boolean', user_projects.map(project => project.name).includes(projectName));
     const hex_codes = colors.map(colorObj => colorObj.color).join();
-    if(projectInfo.id) {
-      const newPalette = { project_id: projectInfo.id, hex_codes, name: paletteName };
+    if(user_projects.map(project => project.name).includes(projectName)) {
+      const newPalette = { project_id: currentProject.id, hex_codes, name: paletteName };
       await this.createPalette(newPalette);
+      this.userProjects(user.id);
     } else {
-      const project_id = await this.createProject({ user_id: user.id, name: projectInfo });
+      const project_id = await this.createProject({ user_id: user.id, name: projectName });
       const newPalette = { project_id, hex_codes, name: paletteName };
       await this.createPalette(newPalette);
+      this.userProjects(user.id);
     }
-    this.userProjects(user.id);
   }
 
   createProject = async (projectInfo) => {
@@ -139,10 +142,37 @@ export class App extends Component {
     this.setState({user: null})
   }
 
+  trashPalette = async (id) => {
+    const { user } = this.state;
+    try {
+      await deletePalette(id);
+      await this.userProjects(user.id);
+    } catch (error) {
+      this.setState({error: error.message})
+    }
+  }
+
+  trashProject = async (id) => {
+    const { user } = this.state;
+    try {
+      await deleteProject(id);
+      await this.userProjects(user.id);
+      this.setState({ currentProject: null });
+    } catch (error) {
+      this.setState({error: error.message})
+    }
+  }
+
+  clearError = () => {
+    this.setState({ error: '' });
+  }
+
+  updateCurrentProject = (project) => {
+    this.setState({currentProject: project})
+  }
 
   render() {
-    const { error, user, colors, user_projects, user_palettes } = this.state;
-    console.log("this.state :", this.state);
+    const { error, user, colors, user_projects, user_palettes, currentProject } = this.state;
     return (
       <main>
         <Route path='/login' render={() => user ? <Redirect to='/'/> : (
@@ -154,6 +184,7 @@ export class App extends Component {
             />
             <LoginForm
               error={error}
+              clearError={this.clearError}
               loginUser={this.loginUser}
               signUpUser={this.signUpUser}
             />
@@ -174,12 +205,16 @@ export class App extends Component {
               toggleColorLock={this.toggleColorLock}
             /> 
             <ProjectForm 
+              updateCurrentProject={this.updateCurrentProject}
+              currentProject={currentProject}
               handleSubmission={this.handleSubmission}
               projects={user_projects}
             />
             <ProjectsContainer 
               projects={user_projects}
               palettes={user_palettes}
+              trashPalette={this.trashPalette}
+              trashProject={this.trashProject}
             />
             </>
           )

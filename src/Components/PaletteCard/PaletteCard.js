@@ -2,9 +2,8 @@ import React from 'react';
 import './PaletteCard.css';
 
 
-export const PaletteCard = ({ palette }) => {
+export const PaletteCard = ({ palette, trashPalette }) => {
   const colors = Object.values(palette).slice(2)
-  console.log('palette', palette)
   const swatch = colors.map((hex, index) => {
     const divStyle = {
       background: hex,
@@ -23,7 +22,7 @@ export const PaletteCard = ({ palette }) => {
       <div>
         {swatch}
       </div>
-      <button>Trash Can</button>
+      <button onClick={() => trashPalette(palette.id)}>Trash Can</button>
     </div>
   )
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import ProjectCard from '../ProjectCard/ProjectCard'
 import './ProjectsContainer.css';
 
-export const ProjectsContainer = ({ projects, palettes }) => {
+export const ProjectsContainer = ({ projects, palettes, trashPalette, trashProject }) => {
   const projectCards = projects.map((project, index) => {
     const projectPalettes = palettes.filter( palette => project.id === palette.project_id)
-    return <ProjectCard project={project} palettes={projectPalettes} key={index} />
+    return <ProjectCard project={project} palettes={projectPalettes} trashPalette={trashPalette} trashProject={trashProject} key={index} />
   })
 
   return (
