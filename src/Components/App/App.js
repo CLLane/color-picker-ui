@@ -173,6 +173,17 @@ export class App extends Component {
     }
   }
 
+  grabPalette = palette => {
+    let colors = Object.values(palette).slice(3);
+    colors = colors.map(color => {
+      return {
+        color, 
+        locked: true
+      }
+    })
+    this.setState({ colors })
+  }
+
   clearError = () => {
     this.setState({ error: '' });
   }
@@ -242,8 +253,9 @@ export class App extends Component {
             />
             <PaletteContainer 
               palettes={palettes}
+              grabPalette={this.grabPalette}
             />
-            <ProjectForm 
+            {/* <ProjectForm 
               updateCurrentProject={this.updateCurrentProject}
               currentProject={currentProject}
               handleSubmission={this.handleSubmission}
@@ -254,7 +266,7 @@ export class App extends Component {
               palettes={user_palettes}
               trashPalette={this.trashPalette}
               trashProject={this.trashProject}
-            />
+            /> */}
             </>
           )
         } />
