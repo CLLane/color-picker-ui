@@ -206,7 +206,7 @@ export class App extends Component {
             /> 
             <ProjectForm 
               updateCurrentProject={this.updateCurrentProject}
-              currentProjectName={currentProject}
+              currentProject={currentProject}
               handleSubmission={this.handleSubmission}
               projects={user_projects}
             />
