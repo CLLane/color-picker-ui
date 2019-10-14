@@ -144,5 +144,24 @@ export const deleteProject = async (id) => {
   } catch (error) {
     throw new Error (error.message)
   }
-  
+};
+
+export const editProjectName = async (project) => {
+  try { 
+    const options = {
+      method: 'PATCH',
+      body: JSON.stringify(project),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await fetch(`http://localhost:3001/projects/${project.id}`, options);
+    if (!response.ok) {
+      throw new Error('Unable to edit Project');
+    } 
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw new Error (error.message)
+  }
 };

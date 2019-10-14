@@ -16,7 +16,8 @@ import {
   postNewPalette,
   deletePalette,
   deleteProject,
-  getAllPalettes
+  getAllPalettes,
+  editProjectName
 } from "../../utilities/apiCalls";
 
 export class App extends Component {
@@ -58,7 +59,7 @@ export class App extends Component {
     }
   };
 
-  userProjects = async userId => {
+  userProjects = async (userId) => {
     try {
       const projects = await getUserProjects(userId);
       this.setState({ user_projects: projects });
@@ -199,6 +200,13 @@ export class App extends Component {
     this.setState({ currentProject: project });
   };
 
+  updateProjectName = async project => {
+    const { user_projects } = this.state;
+    const newProject = await editProjectName(project);
+    const updated_projects = user_projects.map(project => project.id === newProject.id ? newProject : project);
+    this.setState({ user_projects: updated_projects });
+  }
+
   render() {
     const {
       error,
@@ -265,6 +273,7 @@ export class App extends Component {
                   projects={user_projects}
                 />
                 <ProjectsContainer
+                  updateProjectName={this.updateProjectName}
                   projects={user_projects}
                   palettes={user_palettes}
                   trashPalette={this.trashPalette}
@@ -286,7 +295,7 @@ export class App extends Component {
                 <h1>Welcome, {user.name}</h1>
                 <button onClick={this.logoutUser}>Log Out</button>
                 <Link to="/">
-                  <button>Generate New Palette</button>
+                  <button onClick={() => this.userProjects(user.id)}>Generate New Palette</button>
                 </Link>
                 <img
                   src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
