@@ -14,10 +14,12 @@ export const ColorContainer = ({ colors, generateColors, toggleColorLock }) => {
   });
 
   return (
-    <section>
-      {colorCards}
+    <>
+      <section className='color-container__section'>
+        {colorCards}
+      </section>
       <button onClick={generateColors}>Generate New Colors</button>
-    </section>
+    </>
   );
 };
 

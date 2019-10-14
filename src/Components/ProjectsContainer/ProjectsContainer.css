@@ -1,0 +1,5 @@
+.projectContainer {
+  display: flex;
+  overflow: auto;
+
+}
