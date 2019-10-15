@@ -60,7 +60,7 @@ export class App extends Component {
     }
   };
 
-  userProjects = async (userId) => {
+  userProjects = async userId => {
     try {
       const projects = await getUserProjects(userId);
       this.setState({ user_projects: projects });
@@ -204,14 +204,18 @@ export class App extends Component {
   updateProjectName = async project => {
     const { user_projects } = this.state;
     const newProject = await editProjectName(project);
-    const updated_projects = user_projects.map(project => project.id === newProject.id ? newProject : project);
+    const updated_projects = user_projects.map(project =>
+      project.id === newProject.id ? newProject : project
+    );
     this.setState({ user_projects: updated_projects });
   };
 
   updatePaletteName = async palette => {
     const { user_palettes } = this.state;
     const newPalette = await editPaletteName(palette);
-    const updated_palettes = user_palettes.map(palette => palette.id === newPalette.id ? newPalette: palette);
+    const updated_palettes = user_palettes.map(palette =>
+      palette.id === newPalette.id ? newPalette : palette
+    );
     this.setState({ user_palettes: updated_palettes });
   };
 
@@ -257,18 +261,20 @@ export class App extends Component {
               <Redirect to="/login" />
             ) : (
               <>
-                <h1>Welcome, {user.name}</h1>
-                <button onClick={this.logoutUser}>Log Out</button>
-                <Link to="/palettes">
-                  <button onClick={this.allPalettes}>
-                    Browse All Palettes
-                  </button>
-                </Link>
-                <img
+              <h1>Welcome, {user.name}</h1>
+                <div className='header-container'>
+                  <Link to="/palettes">
+                    <button className='all-palettes__button' onClick={this.allPalettes}>
+                      Browse All Palettes
+                    </button>
+                  </Link>
+                <img className='logo__image'
                   src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
                   alt="graffiti-fonts"
                   border="0"
                 />
+                  <button className='log-out__button' onClick={this.logoutUser}>Log Out</button>
+                </div>
                 <ColorContainer
                   colors={colors}
                   generateColors={this.generateColors}
@@ -304,7 +310,9 @@ export class App extends Component {
                 <h1>Welcome, {user.name}</h1>
                 <button onClick={this.logoutUser}>Log Out</button>
                 <Link to="/">
-                  <button onClick={() => this.userProjects(user.id)}>Generate New Palette</button>
+                  <button onClick={() => this.userProjects(user.id)}>
+                    Generate New Palette
+                  </button>
                 </Link>
                 <img
                   src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"

@@ -46,25 +46,36 @@ export class PaletteCard extends Component {
     return <div style={divStyle} key={index}></div>
   })
       return (
-    <div>
-      { error && <p>{error}</p> }
-        <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
-      { disabled && <p onClick={this.editName}>Edit</p> } 
-      { !disabled && <p onClick={this.saveName}>Save</p> }
-      <div>{swatch}</div>
-      {grabPalette && (
-        <Link to="/">
-          <button onClick={() => grabPalette(palette)}>Grab Palette</button>
-        </Link>
-      )}
-      {trashPalette && (
-        <button onClick={() => trashPalette(palette.id)}>Trash Can</button>
-      )}
-      {showPalette && (
-        <button onClick={() => showPalette(palette)}>Grab Palette</button>
-      )}
-    </div>
-  );
+        <div>
+          {error && <p>{error}</p>}
+          <input
+            type="text"
+            onChange={this.handleChange}
+            disabled={disabled}
+            value={nameInput}
+          ></input>
+          {disabled && <p onClick={this.editName}>Edit</p>}
+          {!disabled && <p onClick={this.saveName}>Save</p>}
+          <div className='swatch__container'>
+            {swatch}
+            {grabPalette && (
+              <Link to="/">
+                <button onClick={() => grabPalette(palette)}>
+                  Grab Palette
+                </button>
+              </Link>
+            )}
+            {trashPalette && (
+              <button onClick={() => trashPalette(palette.id)}>
+                Trash Can
+              </button>
+            )}
+            {showPalette && (
+              <button onClick={() => showPalette(palette)}>Grab Palette</button>
+            )}
+          </div>
+        </div>
+      );
   }
 }
 

@@ -1,0 +1,13 @@
+.project-card__header {
+  display: flex;
+  justify-content: space-evenly;
+}
+.project-card__article {
+  min-width: 45vh;
+  min-height: 30vh;
+  border-radius: 8px;
+  background: rgb(245, 245, 245, .9);
+  margin-right: 10px;
+  padding: 5px;
+  margin-top: 10px;
+}

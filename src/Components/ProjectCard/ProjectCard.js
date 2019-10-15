@@ -41,12 +41,14 @@ export class ProjectCard extends Component {
     });
 
     return (
-      <article>
-        { error && <p>{error}</p> }
-        <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
-        { disabled && <p onClick={this.editName}>Edit</p> } 
-        { !disabled && <p onClick={this.saveName}>Save</p> }
-        <button onClick={() => trashProject(project.id)}>Trash Project</button>
+      <article className='project-card__article'>
+        <div className='project-card__header'>
+          { error && <p>{error}</p> }
+          <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
+          { disabled && <p onClick={this.editName}>Edit</p> } 
+          { !disabled && <p onClick={this.saveName}>Save</p> }
+          <button onClick={() => trashProject(project.id)}>Trash Project</button>
+        </div>
         { paletteCards }
       </article>
     ) 

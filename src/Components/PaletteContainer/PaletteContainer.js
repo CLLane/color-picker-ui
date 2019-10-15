@@ -7,7 +7,7 @@ export const PaletteContainer = ({ palettes, grabPalette, updatePaletteName }) =
     return <PaletteCard palette={palette} grabPalette={grabPalette} updatePaletteName={updatePaletteName} key={palette.id} />;
   });
 
-  return <section>{paletteCards}</section>;
+  return <section className='palette-card__container'>{paletteCards}</section>;
 };
 
 export default PaletteContainer;

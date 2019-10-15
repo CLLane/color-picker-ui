@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import './ProjectForm.css';
+import React, { Component } from "react";
+import "./ProjectForm.css";
 
 export class ProjectForm extends Component {
   constructor() {
     super();
     this.state = {
-      projectName: '',
-      paletteName: '',
-      select: 'new-project'
-    }
+      projectName: "",
+      paletteName: "",
+      select: "new-project"
+    };
   }
 
   componentDidUpdate(prevProps) {
     const { projects } = this.props;
-    if(projects.length !== prevProps.projects.length) {
-      this.setState({ select: 'new-project' })
+    if (projects.length !== prevProps.projects.length) {
+      this.setState({ select: "new-project" });
     }
-  };
+  }
 
-  selectProject = (value) => {
+  selectProject = value => {
     const { projects, updateCurrentProject } = this.props;
-    if(value === 'new-project') {
+    if (value === "new-project") {
       updateCurrentProject(null);
-      this.setState({ select: 'new-project' });
+      this.setState({ select: "new-project" });
     } else {
       const currentProject = projects.find(project => project.name === value);
       updateCurrentProject(currentProject);
@@ -30,15 +30,15 @@ export class ProjectForm extends Component {
     }
   };
 
-  handleNameChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+  handleNameChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async (e) => { 
+  handleSubmit = async e => {
     e.preventDefault();
     const { projectName, paletteName, select } = this.state;
     const { handleSubmission } = this.props;
-    if(select !== 'new-project') {
+    if (select !== "new-project") {
       await handleSubmission(select, paletteName);
     } else {
       await handleSubmission(projectName, paletteName);
@@ -50,25 +50,54 @@ export class ProjectForm extends Component {
     const { projects, currentProject } = this.props;
     const { projectName, paletteName, select } = this.state;
     const options = projects.map((project, index) => {
-      return <option key={index} value={project.name}>{project.name}</option>
+      return (
+        <option key={index} value={project.name}>
+          {project.name}
+        </option>
+      );
     });
     const disableProjectName = currentProject ? true : false;
-    let saveIsDisabled = projectName === '' || paletteName === '';
-    if(select !== 'new-project') {
-      saveIsDisabled = paletteName === '';
-    };
-    const projectPlaceholder = currentProject ? currentProject.name : 'Enter a Project';
+    let saveIsDisabled = projectName === "" || paletteName === "";
+    if (select !== "new-project") {
+      saveIsDisabled = paletteName === "";
+    }
+    const projectPlaceholder = currentProject
+      ? currentProject.name
+      : "Enter a Project";
     return (
-      <form>
-        <select value={select} onChange={(e) => this.selectProject(e.target.value)}>
-          { options }
-          <option value='new-project'>Create New Project</option>
-        </select>
-        <input type='text' disabled={disableProjectName} name='projectName' placeholder={projectPlaceholder} onChange={this.handleNameChange} value={projectName}></input>
-        <input type='text' placeholder='Enter Palette Name' name='paletteName' onChange={this.handleNameChange} value={paletteName}></input>
-        <button disabled={saveIsDisabled} onClick={this.handleSubmit}>Save</button>
-      </form>
-    )
+      <div className="project-form__container">
+        <form className='project__form'>
+          <select
+            className="project-name__dropdown"
+            value={select}
+            onChange={e => this.selectProject(e.target.value)}
+          >
+            {options}
+            <option value="new-project">Create New Project</option>
+          </select>
+          <input
+            className="project-name__input"
+            type="text"
+            disabled={disableProjectName}
+            name="projectName"
+            placeholder={projectPlaceholder}
+            onChange={this.handleNameChange}
+            value={projectName}
+          ></input>
+          <input
+            className="palette-name__input"
+            type="text"
+            placeholder="Enter Palette Name"
+            name="paletteName"
+            onChange={this.handleNameChange}
+            value={paletteName}
+          ></input>
+          <button disabled={saveIsDisabled} onClick={this.handleSubmit}>
+            Save
+          </button>
+        </form>
+      </div>
+    );
   }
 }
 

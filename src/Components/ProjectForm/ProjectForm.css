@@ -1,0 +1,20 @@
+.project-form__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-name__input, .palette-name__input, .project-name__dropdown {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background: rgb(245, 245, 245, .9);
+  border: 2px solid grey;
+}
+
+.project__form {
+  background: rgb(245, 245, 245, .9);
+  border-radius: 8px;
+  padding: 5px;
+}
