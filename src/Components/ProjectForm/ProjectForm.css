@@ -14,7 +14,8 @@
 }
 
 .project__form {
-  background: rgb(245, 245, 245, .9);
+  background: rgb(245, 245, 245, .8);
   border-radius: 8px;
   padding: 5px;
+  border: solid 4px darkgrey;
 }

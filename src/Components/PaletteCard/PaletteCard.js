@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './PaletteCard.css';
 import { Link } from 'react-router-dom';
+import editIcon from "../../Images/editIcon.svg";
+import trashIcon from "../../Images/trashIcon.svg";
+import expandIcon from '../../Images/expandIcon.svg';
+import saveIcon from '../../Images/saveIcon.svg';
 
 
 export class PaletteCard extends Component {
@@ -46,7 +50,7 @@ export class PaletteCard extends Component {
     return <div style={divStyle} key={index}></div>
   })
       return (
-        <div>
+        <div className='palette__container'>
           {error && <p>{error}</p>}
           <input
             type="text"
@@ -54,24 +58,20 @@ export class PaletteCard extends Component {
             disabled={disabled}
             value={nameInput}
           ></input>
-          {disabled && <p onClick={this.editName}>Edit</p>}
-          {!disabled && <p onClick={this.saveName}>Save</p>}
+          {disabled && <img src={editIcon} alt='edit palette' onClick={this.editName}/>}
+          {!disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/>}
           <div className='swatch__container'>
             {swatch}
             {grabPalette && (
               <Link to="/">
-                <button onClick={() => grabPalette(palette)}>
-                  Grab Palette
-                </button>
+                <img src={expandIcon} alt='expand palette' onClick={() => grabPalette(palette)}/>
               </Link>
             )}
             {trashPalette && (
-              <button onClick={() => trashPalette(palette.id)}>
-                Trash Can
-              </button>
+              <img src={trashIcon} alt='delete palette' onClick={() => trashPalette(palette.id)}/>
             )}
             {showPalette && (
-              <button onClick={() => showPalette(palette)}>Grab Palette</button>
+              <img src={expandIcon} alt='expand palette' onClick={() => showPalette(palette)}/>
             )}
           </div>
         </div>

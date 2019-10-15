@@ -6,6 +6,9 @@ main {
   text-align: center;
 }
 
+h1 {
+  margin: 0;
+}
 .header-container {
   display: flex;
   justify-content: center;
@@ -14,13 +17,13 @@ main {
 }
 
 .all-palettes__button {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .log-out__button {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .logo__image {
   margin-left: 245px;
   margin-right: 230px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
