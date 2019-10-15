@@ -15,13 +15,15 @@ export const ColorContainer = ({ colors, generateColors, toggleColorLock }) => {
   });
 
   return (
-    <div className='color-container'>
-      <section className='palette-container__section'>
-        {colorCards}
-      </section>
-      <div className='generate-color__container'>
-        <img className='generate-color__image' src={newColors} alt='generate colors' onClick={generateColors}/>
-        <p className='generate-colors__paragraph'>Generate Colors</p>
+    <div className="color-container">
+      <section className="palette-container__section">{colorCards}</section>
+      <div className="generate-color__container" onClick={generateColors}>
+        <img
+          className="generate-color__image"
+          src={newColors}
+          alt="generate colors"
+        />
+        <p className="generate-colors__paragraph">Generate Colors</p>
       </div>
     </div>
   );

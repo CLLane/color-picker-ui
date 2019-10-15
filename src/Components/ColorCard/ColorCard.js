@@ -1,5 +1,7 @@
 import React from 'react';
 import './ColorCard.css';
+import unlockedIcon from '../../Images/unlockedIcon.svg';
+import lockedIcon from '../../Images/lockedIcon.svg';
 
 export const ColorCard = ({ card, toggleColorLock}) => {
   let cardStyle = {
@@ -16,13 +18,17 @@ export const ColorCard = ({ card, toggleColorLock}) => {
     boxShadow: "4px 4px 20px black"
   };
 
-  const lockImage = card.locked ? 'Unlock' : 'Lock'
+  const lockImage = card.locked ? lockedIcon : unlockedIcon;
   return (
     <article style={cardStyle}>
-      <button onClick={() => toggleColorLock(card.index)}>{ lockImage }</button>
-      <input disabled={true} type='text' placeholder={ card.color }></input>
+      <img
+        src={lockImage}
+        alt="unlocked"
+        onClick={() => toggleColorLock(card.index)}
+      />
+      <input disabled={true} type="text" placeholder={card.color}></input>
     </article>
-  )
+  );
 }
 
 export default ColorCard;

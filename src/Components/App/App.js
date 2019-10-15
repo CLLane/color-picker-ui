@@ -20,6 +20,7 @@ import {
   editProjectName,
   editPaletteName
 } from "../../utilities/apiCalls";
+import showAllPalettesIcon from "../../Images/showAllPalettes.svg";
 
 export class App extends Component {
   constructor() {
@@ -261,19 +262,24 @@ export class App extends Component {
               <Redirect to="/login" />
             ) : (
               <>
-              <h1>Welcome, {user.name}</h1>
-                <div className='header-container'>
+                <h1>Welcome, {user.name}</h1>
+                <div className="header-container">
                   <Link to="/palettes">
-                    <button className='all-palettes__button' onClick={this.allPalettes}>
-                      Browse All Palettes
-                    </button>
+                    <img
+                      src={showAllPalettesIcon}
+                      alt='show all palettes'
+                      className="all-palettes__button"
+                      onClick={this.allPalettes}/>
                   </Link>
-                <img className='logo__image'
-                  src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
-                  alt="graffiti-fonts"
-                  border="0"
-                />
-                  <button className='log-out__button' onClick={this.logoutUser}>Log Out</button>
+                  <img
+                    className="logo__image"
+                    src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+                    alt="graffiti-fonts"
+                    border="0"
+                  />
+                  <button className="log-out__button" onClick={this.logoutUser}>
+                    Log Out
+                  </button>
                 </div>
                 <ColorContainer
                   colors={colors}
