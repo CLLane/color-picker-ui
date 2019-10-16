@@ -245,7 +245,8 @@ export class App extends Component {
             ) : (
               <>
                 <img
-                  src="https://fontmeme.com/permalink/191011/986cec0ee62e1c276228d73cd566bdd2.png"
+                  className='login-logo'
+                  src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
                   alt="graffiti-fonts"
                   border="0"
                 />
@@ -267,14 +268,15 @@ export class App extends Component {
               <Redirect to="/login" />
             ) : (
               <>
-                <h1>Welcome, {user.name}</h1>
+                <h1>Welcome to {user.name}'s</h1>
                 <div className="header-container">
                   <Link to="/palettes">
                     <img
                       src={showAllPalettesIcon}
-                      alt='show all palettes'
+                      alt="show all palettes"
                       className="all-palettes__button"
-                      onClick={this.allPalettes}/>
+                      onClick={this.allPalettes}
+                    />
                   </Link>
                   <img
                     className="logo__image"
@@ -282,7 +284,12 @@ export class App extends Component {
                     alt="graffiti-fonts"
                     border="0"
                   />
-                  <img src={logOutIcon} alt='log out user' className="log-out__button" onClick={this.logoutUser}/>
+                  <img
+                    src={logOutIcon}
+                    alt="log out user"
+                    className="log-out__button"
+                    onClick={this.logoutUser}
+                  />
                 </div>
                 <ColorContainer
                   colors={colors}
@@ -318,17 +325,25 @@ export class App extends Component {
             ) : (
               <>
                 <h1>Welcome, {user.name}</h1>
-              <div className='header-container'>
-                <Link to="/">
-                  <img src={generateColors} alt='generate colors' onClick={() => this.userProjects(user.id)}/>
-                </Link>
-                <img
-                  src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
-                  alt="graffiti-fonts"
-                  border="0"
-                />
-                <img src={logOutIcon} alt='log out user' onClick={this.logoutUser}/>
-              </div>
+                <div className="header-container">
+                  <Link to="/">
+                    <img
+                      src={generateColors}
+                      alt="generate colors"
+                      onClick={() => this.userProjects(user.id)}
+                    />
+                  </Link>
+                  <img
+                    src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
+                    alt="graffiti-fonts"
+                    border="0"
+                  />
+                  <img
+                    src={logOutIcon}
+                    alt="log out user"
+                    onClick={this.logoutUser}
+                  />
+                </div>
                 <AllPaletteContainer
                   palettes={palettes}
                   grabPalette={this.grabPalette}

@@ -15,6 +15,10 @@ button {
     background: rgba(167, 241, 253, 0.95);
   }
 
+img:hover {
+  cursor: pointer;
+}
+
 
 input {
     border: none;
