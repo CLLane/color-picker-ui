@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Color Card should match the snapshot when the card is locked 1`] = `
+<article
+  style={
+    Object {
+      "background": "#000000",
+    }
+  }
+>
+  <button
+    onClick={[Function]}
+  >
+    Unlock
+  </button>
+  <input
+    disabled={true}
+    placeholder="#000000"
+    type="text"
+  />
+</article>
+`;
+
+exports[`Color Card should match the snapshot when the card is not locked 1`] = `
+<article
+  style={
+    Object {
+      "background": "#FFFFFF",
+    }
+  }
+>
+  <button
+    onClick={[Function]}
+  >
+    Lock
+  </button>
+  <input
+    disabled={true}
+    placeholder="#FFFFFF"
+    type="text"
+  />
+</article>
+`;

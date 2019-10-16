@@ -6,7 +6,7 @@ export const ColorCard = ({ card, toggleColorLock}) => {
     background: card.color
   }
 
-  const lockImage = card.locked ? 'Unlock' : 'Lock'
+  const lockImage = card.locked ? 'Unlock' : 'Lock';
   return (
     <article style={cardStyle}>
       <button onClick={() => toggleColorLock(card.index)}>{ lockImage }</button>
