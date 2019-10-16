@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Project Card should match the snapshot 1`] = `
+<article
+  className="project-card__article"
+>
+  <div
+    className="project-card__header"
+  >
+    <img
+      alt="edit icon"
+      onClick={[Function]}
+      src="editIcon.svg"
+    />
+    <input
+      className="project-edit__input"
+      disabled={true}
+      maxlength="25"
+      onChange={[Function]}
+      type="text"
+      value="Cool Project"
+    />
+    <img
+      alt="trashIcon"
+      onClick={[Function]}
+      src="trashIcon.svg"
+    />
+  </div>
+  <PaletteCard
+    key="0"
+    palette={
+      Object {
+        "colorFive": "#FFFFFF",
+        "colorFour": "#FFFFFF",
+        "colorOne": "#FFFFFF",
+        "colorThree": "#FFFFFF",
+        "colorTwo": "#FFFFFF",
+        "id": 1,
+        "name": "Cool Colors",
+        "project_id": "12345",
+      }
+    }
+    showPalette={[MockFunction]}
+    trashPalette={[MockFunction]}
+    updatePaletteName={[MockFunction]}
+  />
+</article>
+`;
+
+exports[`Project Card should match the snapshot when the project name is edittable 1`] = `
+<article
+  className="project-card__article"
+>
+  <div
+    className="project-card__header"
+  >
+    <img
+      alt="save icon"
+      onClick={[Function]}
+      src="saveIcon.svg"
+    />
+    <input
+      className="project-edit__input"
+      disabled={false}
+      maxlength="25"
+      onChange={[Function]}
+      type="text"
+      value="Cool Project"
+    />
+    <img
+      alt="trashIcon"
+      onClick={[Function]}
+      src="trashIcon.svg"
+    />
+  </div>
+  <PaletteCard
+    key="0"
+    palette={
+      Object {
+        "colorFive": "#FFFFFF",
+        "colorFour": "#FFFFFF",
+        "colorOne": "#FFFFFF",
+        "colorThree": "#FFFFFF",
+        "colorTwo": "#FFFFFF",
+        "id": 1,
+        "name": "Cool Colors",
+        "project_id": "12345",
+      }
+    }
+    showPalette={[MockFunction]}
+    trashPalette={[MockFunction]}
+    updatePaletteName={[MockFunction]}
+  />
+</article>
+`;
