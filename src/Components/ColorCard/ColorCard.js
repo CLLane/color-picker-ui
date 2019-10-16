@@ -26,7 +26,7 @@ export const ColorCard = ({ card, toggleColorLock}) => {
         alt="unlocked"
         onClick={() => toggleColorLock(card.index)}
       />
-      <input disabled={true} type="text" placeholder={card.color}></input>
+      <input className='hex-code__input' disabled={true} type="text" placeholder={card.color}></input>
     </article>
   );
 }

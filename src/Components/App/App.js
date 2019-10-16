@@ -6,6 +6,7 @@ import "./App.css";
 import ProjectForm from "../ProjectForm/ProjectForm";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
 import PaletteContainer from "../PaletteContainer/PaletteContainer";
+import AllPaletteContainer from '/Users/panko/mod-4/color-picker-ui/src/Components/AllPalleteContainer/AllPaletteContainer.js'
 import { Route, Redirect, Link } from "react-router-dom";
 import {
   getUser,
@@ -21,6 +22,8 @@ import {
   editPaletteName
 } from "../../utilities/apiCalls";
 import showAllPalettesIcon from "../../Images/showAllPalettes.svg";
+import logOutIcon from '../../Images/logoutIcon.svg';
+import generateColors from '../../Images/generateColors.svg';
 
 export class App extends Component {
   constructor() {
@@ -273,13 +276,11 @@ export class App extends Component {
                   </Link>
                   <img
                     className="logo__image"
-                    src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+                    src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
                     alt="graffiti-fonts"
                     border="0"
                   />
-                  <button className="log-out__button" onClick={this.logoutUser}>
-                    Log Out
-                  </button>
+                  <img src={logOutIcon} alt='log out user' className="log-out__button" onClick={this.logoutUser}/>
                 </div>
                 <ColorContainer
                   colors={colors}
@@ -314,18 +315,18 @@ export class App extends Component {
             ) : (
               <>
                 <h1>Welcome, {user.name}</h1>
-                <button onClick={this.logoutUser}>Log Out</button>
+              <div className='header-container'>
                 <Link to="/">
-                  <button onClick={() => this.userProjects(user.id)}>
-                    Generate New Palette
-                  </button>
+                  <img src={generateColors} alt='generate colors' onClick={() => this.userProjects(user.id)}/>
                 </Link>
                 <img
-                  src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+                  src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
                   alt="graffiti-fonts"
                   border="0"
                 />
-                <PaletteContainer
+                <img src={logOutIcon} alt='log out user' onClick={this.logoutUser}/>
+              </div>
+                <AllPaletteContainer
                   palettes={palettes}
                   grabPalette={this.grabPalette}
                 />

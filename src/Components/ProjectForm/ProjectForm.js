@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import saveNewPalette from '../../Images/saveNewPalette.svg';
+import disableNewPalette from '../../Images/disableNewPalette.svg'
 import "./ProjectForm.css";
 
 export class ProjectForm extends Component {
@@ -76,6 +78,7 @@ export class ProjectForm extends Component {
             <option value="new-project">Create New Project</option>
           </select>
           <input
+            maxlength="25"
             className="project-name__input"
             type="text"
             disabled={disableProjectName}
@@ -85,6 +88,7 @@ export class ProjectForm extends Component {
             value={projectName}
           ></input>
           <input
+            maxlength="13"
             className="palette-name__input"
             type="text"
             placeholder="Enter Palette Name"
@@ -92,9 +96,8 @@ export class ProjectForm extends Component {
             onChange={this.handleNameChange}
             value={paletteName}
           ></input>
-          <button disabled={saveIsDisabled} onClick={this.handleSubmit}>
-            Save
-          </button>
+          { !saveIsDisabled && <img src={saveNewPalette} alt='save new palette' onClick={this.handleSubmit}/> }
+          { saveIsDisabled && <img src={disableNewPalette} alt='disable save palette'/> }
         </form>
       </div>
     );

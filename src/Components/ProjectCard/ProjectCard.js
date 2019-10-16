@@ -48,8 +48,15 @@ export class ProjectCard extends Component {
         <div className='project-card__header'>
           { error && <p>{error}</p> }
           { disabled && <img src={editIcon} alt='edit icon' onClick={this.editName}/> } 
-          <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
           { !disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/> }
+          <input 
+          maxlength="25" 
+          className='project-edit__input' 
+          type='text' 
+          onChange={this.handleChange} 
+          disabled={disabled} 
+          value={nameInput}
+          ></input>
           <img src={trashIcon} alt='trashIcon' onClick={() => trashProject(project.id)}/>
         </div>
         { paletteCards }

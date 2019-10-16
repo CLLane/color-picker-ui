@@ -21,5 +21,7 @@ input {
     border-radius: 10px;
     height: 45px;
     background: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+    font-weight: bold;
     text-align: center;
 }

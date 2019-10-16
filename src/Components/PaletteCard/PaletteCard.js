@@ -46,20 +46,28 @@ export class PaletteCard extends Component {
       background: hex,
       height: '5vh',
       width: '5vh',
+      borderRadius: '8px',
+      marginRight: '1.5px',
+      marginLeft: '1.5px',
+      marginTop: '2px',
     }
     return <div style={divStyle} key={index}></div>
   })
       return (
         <div className='palette__container'>
           {error && <p>{error}</p>}
-          <input
-            type="text"
-            onChange={this.handleChange}
-            disabled={disabled}
-            value={nameInput}
-          ></input>
-          {disabled && <img src={editIcon} alt='edit palette' onClick={this.editName}/>}
-          {!disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/>}
+          <div className='palette-name__container'>
+            <input
+              maxlength="13"
+              className='palette-edit__input'
+              type="text"
+              onChange={this.handleChange}
+              disabled={disabled}
+              value={nameInput}
+            ></input>
+            {disabled && <img src={editIcon} alt='edit palette' onClick={this.editName}/>}
+            {!disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/>}
+          </div>
           <div className='swatch__container'>
             {swatch}
             {grabPalette && (
@@ -67,11 +75,11 @@ export class PaletteCard extends Component {
                 <img src={expandIcon} alt='expand palette' onClick={() => grabPalette(palette)}/>
               </Link>
             )}
+              {showPalette && (
+                <img src={expandIcon} alt='expand palette' onClick={() => showPalette(palette)}/>
+              )}
             {trashPalette && (
               <img src={trashIcon} alt='delete palette' onClick={() => trashPalette(palette.id)}/>
-            )}
-            {showPalette && (
-              <img src={expandIcon} alt='expand palette' onClick={() => showPalette(palette)}/>
             )}
           </div>
         </div>
