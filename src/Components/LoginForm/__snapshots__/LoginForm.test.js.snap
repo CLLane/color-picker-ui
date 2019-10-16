@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should match the snapshot that allows a new user to sign up 1`] = `
+<form
+  className="sign-in_form"
+>
+  <input
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    type="text"
+    value=""
+  />
+  <input
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    <img
+      alt="graffiti-fonts"
+      border="0"
+      src="https://fontmeme.com/permalink/191011/8e4934228d7a5e0d23888f81c63bcfcd.png"
+    />
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    <img
+      alt="Sign In"
+      border="0"
+      src="https://fontmeme.com/permalink/191011/638e3f86d1ed72f908e3e5c26e09a2f5.png"
+    />
+  </button>
+</form>
+`;
+
+exports[`LoginForm should match the snapshot that allows an existing user to login 1`] = `
+<form
+  className="sign-in_form"
+>
+  <input
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    type="text"
+    value=""
+  />
+  <input
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    <img
+      alt="graffiti-fonts"
+      border="0"
+      src="https://fontmeme.com/permalink/191011/8b36e600f13d2e8bca6002973f735b84.png"
+    />
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    <img
+      alt="graffiti-fonts"
+      border="0"
+      src="https://fontmeme.com/permalink/191011/1857f34f8065b95bfa5d7c167f12c23d.png"
+    />
+  </button>
+</form>
+`;

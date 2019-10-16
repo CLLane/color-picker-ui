@@ -25,6 +25,11 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should match the snapshot when a user is present', () => {
+    wrapper.setState({user: {name: 'bob', id: 12}});
+    expect(wrapper).toMatchSnapshot();
+  })
+
   it('should start with an array of 5 random colors', () => {
     expect(wrapper.state('colors').length).toEqual(5);
   });
@@ -145,7 +150,7 @@ describe('App', () => {
     const url = 'http://localhost:3001/palettes'
     await wrapper.instance().allPalettes();
     expect(window.fetch).toHaveBeenCalledWith(url);
-  });
+  })
 
   it('should update the current colors array, given a palette', () => {
     const mockPalette = {
@@ -241,6 +246,6 @@ describe('App', () => {
     const projectUrl = 'http://localhost:3001/projects';
     wrapper.instance().handleSubmission('uncool project', 'uncool palette');
     expect(window.fetch).toHaveBeenCalledWith(projectUrl, options);
-  })
+  });
 
 });

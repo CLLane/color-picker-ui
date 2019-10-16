@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Projects Container should match the snapshot, given a set of colors 1`] = `
+<section
+  className="project-container__section"
+>
+  <ProjectCard
+    key="0"
+    palettes={
+      Array [
+        Object {
+          "colorFive": "#FFFFFF",
+          "colorFour": "#FFFFFF",
+          "colorOne": "#FFFFFF",
+          "colorThree": "#FFFFFF",
+          "colorTwo": "#FFFFFF",
+          "id": 1,
+          "name": "Cool Colors",
+          "project_id": 12345,
+        },
+        Object {
+          "colorFive": "#FFFFFF",
+          "colorFour": "#FFFFFF",
+          "colorOne": "#FFFFFF",
+          "colorThree": "#FFFFFF",
+          "colorTwo": "#FFFFFF",
+          "id": 2,
+          "name": "Warm Colors",
+          "project_id": 12345,
+        },
+      ]
+    }
+    project={
+      Object {
+        "id": 12345,
+        "name": "Cool Project",
+        "user_id": 1,
+      }
+    }
+    showPalette={[MockFunction]}
+    trashPalette={[MockFunction]}
+    trashProject={[MockFunction]}
+    updatePaletteName={[MockFunction]}
+  />
+</section>
+`;
