@@ -122,7 +122,10 @@ export class App extends Component {
   handleSubmission = async (projectName, paletteName) => {
     const { colors, user, currentProject, user_projects } = this.state;
     const hex_codes = colors.map(colorObj => colorObj.color).join();
-    if (user_projects.map(project => project.name).includes(projectName)) {
+    const isPresent = user_projects.map(project => project.name).includes(projectName)
+    if (isPresent && !currentProject) {
+      this.setState({error: "All Project names must be unique!"});
+    } else  if (isPresent && currentProject !== null) {
       const newPalette = {
         project_id: currentProject.id,
         hex_codes,
@@ -288,6 +291,7 @@ export class App extends Component {
                   toggleColorLock={this.toggleColorLock}
                 />
                 <ProjectForm
+                  error={error}
                   updateCurrentProject={this.updateCurrentProject}
                   currentProject={currentProject}
                   handleSubmission={this.handleSubmission}

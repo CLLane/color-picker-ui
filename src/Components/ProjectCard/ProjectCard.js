@@ -29,12 +29,11 @@ export class ProjectCard extends Component {
     };
     updateProjectName(newProject);
     this.setState({ disabled: true});
-  }
+  };
 
   handleChange = (e) => {
     this.setState({ nameInput: e.target.value})
-  }
-
+  };
 
   render() {
     const { project, palettes, trashPalette, trashProject, showPalette, updatePaletteName} = this.props;
@@ -61,8 +60,8 @@ export class ProjectCard extends Component {
         </div>
         { paletteCards }
       </article>
-    ) 
-  }
+    ); 
+  };
 };
 
 export default ProjectCard;

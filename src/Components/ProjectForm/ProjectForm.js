@@ -49,7 +49,7 @@ export class ProjectForm extends Component {
   };
 
   render() {
-    const { projects, currentProject } = this.props;
+    const { projects, currentProject, error } = this.props;
     const { projectName, paletteName, select } = this.state;
     const options = projects.map((project, index) => {
       return (
@@ -62,7 +62,7 @@ export class ProjectForm extends Component {
     let saveIsDisabled = projectName === "" || paletteName === "";
     if (select !== "new-project") {
       saveIsDisabled = paletteName === "";
-    }
+    };
     const projectPlaceholder = currentProject
       ? currentProject.name
       : "Enter a Project";
@@ -98,6 +98,7 @@ export class ProjectForm extends Component {
           ></input>
           { !saveIsDisabled && <img src={saveNewPalette} alt='save new palette' onClick={this.handleSubmit}/> }
           { saveIsDisabled && <img src={disableNewPalette} alt='disable save palette'/> }
+          { error && <p>{error}</p> }
         </form>
       </div>
     );
