@@ -9,6 +9,7 @@ describe('Palette Card', () => {
   let mockTrashPalette;
   let mockGrabPalette;
   let mockShowPalette;
+  let mockUpdatePaletteName;
   beforeEach(() => {
     mockPalette = {
       id: 1, 
@@ -23,11 +24,13 @@ describe('Palette Card', () => {
     mockTrashPalette = jest.fn();
     mockGrabPalette = jest.fn();
     mockShowPalette = jest.fn();
+    mockUpdatePaletteName = jest.fn();
     wrapper = shallow (<PaletteCard 
       palette={mockPalette}
       trashPalette={mockTrashPalette}
       grabPalette={mockGrabPalette}
       showPalette={mockShowPalette}
+      updatePaletteName={mockUpdatePaletteName}
     />);
   });
 
@@ -35,12 +38,22 @@ describe('Palette Card', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should allow the user to edit the name of the palette', () => {
-
+  it('should match the snapshot when it is not disabled', () => {
+    wrapper.setState({disabled: false});
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('should allow the use to save the name of palette', () => {
+  it('should allow the user to edit the name of the palette', () => {
+    wrapper.instance().editName();
+    expect(wrapper.state('disabled')).toEqual(false);
+  });
 
+  it('should allow the user to save the name of palette', () => {
+    wrapper.setState({nameInput: 'new name'});
+    const expected = {...mockPalette, name: 'new name'};
+    wrapper.instance().saveName();
+    expect(mockUpdatePaletteName).toHaveBeenCalledWith(expected);
+    expect(wrapper.state('disabled')).toEqual(true);
   });
 
   it('should update the palette name with what a user entered', () => {
@@ -52,6 +65,4 @@ describe('Palette Card', () => {
     wrapper.instance().handleChange(mockEvent);
     expect(wrapper.state('nameInput')).toEqual('amazing palette');
   });
-
-
 });

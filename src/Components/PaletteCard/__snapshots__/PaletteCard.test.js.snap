@@ -116,3 +116,120 @@ exports[`Palette Card should match the snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`Palette Card should match the snapshot when it is not disabled 1`] = `
+<div
+  className="palette__container"
+>
+  <div
+    className="palette-name__container"
+  >
+    <input
+      className="palette-edit__input"
+      disabled={false}
+      maxlength="13"
+      onChange={[Function]}
+      type="text"
+      value="Cool Colors"
+    />
+    <img
+      alt="save icon"
+      onClick={[Function]}
+      src="saveIcon.svg"
+    />
+  </div>
+  <div
+    className="swatch__container"
+  >
+    <div
+      key="0"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
+          "width": "5vh",
+        }
+      }
+    />
+    <div
+      key="1"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
+          "width": "5vh",
+        }
+      }
+    />
+    <div
+      key="2"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
+          "width": "5vh",
+        }
+      }
+    />
+    <div
+      key="3"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
+          "width": "5vh",
+        }
+      }
+    />
+    <div
+      key="4"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
+          "width": "5vh",
+        }
+      }
+    />
+    <Link
+      to="/"
+    >
+      <img
+        alt="expand palette"
+        onClick={[Function]}
+        src="expandIcon.svg"
+      />
+    </Link>
+    <img
+      alt="expand palette"
+      onClick={[Function]}
+      src="expandIcon.svg"
+    />
+    <img
+      alt="delete palette"
+      onClick={[Function]}
+      src="trashIcon.svg"
+    />
+  </div>
+</div>
+`;

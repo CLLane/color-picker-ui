@@ -5,7 +5,6 @@ import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import ProjectForm from "../ProjectForm/ProjectForm";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
-import PaletteContainer from "../PaletteContainer/PaletteContainer";
 import AllPaletteContainer from '../AllPalleteContainer/AllPaletteContainer.js'
 import { Route, Redirect, Link } from "react-router-dom";
 import {
@@ -41,7 +40,7 @@ export class App extends Component {
       user: null,
       user_projects: [],
       user_palettes: [],
-      currentProjec: null,
+      currentProject: null,
       palettes: []
     };
   }
