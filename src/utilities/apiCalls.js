@@ -9,7 +9,7 @@ export const getUser = async (userInfo) => {
         'Content-Type': 'application/json'
       }
     };
-    const response = await fetch('http://localhost:3001/user/login', options);
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/user/login', options);
     if(!response.ok) {
       throw new Error ('Unable to Login');
     }
@@ -22,7 +22,9 @@ export const getUser = async (userInfo) => {
 
 export const getUserProjects = async (id) => {
   try {
-    const response = await fetch(`http://localhost:3001/projects/${id}`);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/projects/${id}`
+    );
     const projects = await response.json();
     return projects;
   } catch (error) {
@@ -32,7 +34,9 @@ export const getUserProjects = async (id) => {
 
 export const getUserPalettes = async (id) => {
   try {
-    const response = await fetch(`http://localhost:3001/palettes/${id}`);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/palettes/${id}`
+    );
     const palettes = await response.json();
     return cleanPalettes(palettes);
   } catch (error) {
@@ -42,7 +46,9 @@ export const getUserPalettes = async (id) => {
 
 export const getAllPalettes = async () => {
   try {
-    const response = await fetch('http://localhost:3001/palettes');
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/palettes"
+    );
     const result = await response.json()
     return cleanPalettes(result)
   } catch (error) {
@@ -59,7 +65,10 @@ export const postNewUser = async (userInfo) => {
         'Content-Type': 'application/json'
       }
     };
-    const response = await fetch('http://localhost:3001/user/signup', options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/user/signup",
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to Sign Up');
     }
@@ -79,7 +88,10 @@ export const postNewProject = async (projectInfo) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch('http://localhost:3001/projects', options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/projects",
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to create Project');
     } 
@@ -99,7 +111,10 @@ export const postNewPalette = async (paletteInfo) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch('http://localhost:3001/palettes', options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/palettes",
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to create Palette');
     } 
@@ -118,7 +133,10 @@ export const deletePalette = async (id) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch(`http://localhost:3001/palettes/${id}`, options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/palettes/${id}`,
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to delete Palette');
     } 
@@ -136,7 +154,10 @@ export const deleteProject = async (id) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch(`http://localhost:3001/projects/${id}`, options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/projects/${id}`,
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to delete Project');
     } 
@@ -155,7 +176,10 @@ export const editProjectName = async (project) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch(`http://localhost:3001/projects/${project.id}`, options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/projects/${project.id}`,
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to edit Project');
     } 
@@ -175,7 +199,10 @@ export const editPaletteName = async (palette) => {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch(`http://localhost:3001/palettes/${palette.id}`, options);
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + `/palettes/${palette.id}`,
+      options
+    );
     if (!response.ok) {
       throw new Error('Unable to edit Palette');
     } 
