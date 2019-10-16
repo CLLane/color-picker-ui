@@ -43,5 +43,4 @@ describe('AllPalette Container', () => {
   it('should match the snapshot, given a set of colors', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
 });

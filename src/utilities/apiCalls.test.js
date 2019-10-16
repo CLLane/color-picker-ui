@@ -80,13 +80,6 @@ describe("getUserPalettes", () => {
         id: 1
       }
     ];
-
-    window.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockResponse)
-      });
-    });
   });
  
   it('should get an array of palettes, that are cleaned', () => {
