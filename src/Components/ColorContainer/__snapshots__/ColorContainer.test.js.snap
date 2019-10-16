@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Color Container should match the snapshot, given a set of colors 1`] = `
+<section>
+  <ColorCard
+    card={
+      Object {
+        "color": "#FFFFFF",
+        "index": 0,
+        "locked": false,
+      }
+    }
+    key="0"
+    toggleColorLock={[MockFunction]}
+  />
+  <ColorCard
+    card={
+      Object {
+        "color": "#FFFFFF",
+        "index": 1,
+        "locked": false,
+      }
+    }
+    key="1"
+    toggleColorLock={[MockFunction]}
+  />
+  <ColorCard
+    card={
+      Object {
+        "color": "#FFFFFF",
+        "index": 2,
+        "locked": false,
+      }
+    }
+    key="2"
+    toggleColorLock={[MockFunction]}
+  />
+  <ColorCard
+    card={
+      Object {
+        "color": "#FFFFFF",
+        "index": 3,
+        "locked": false,
+      }
+    }
+    key="3"
+    toggleColorLock={[MockFunction]}
+  />
+  <ColorCard
+    card={
+      Object {
+        "color": "#FFFFFF",
+        "index": 4,
+        "locked": false,
+      }
+    }
+    key="4"
+    toggleColorLock={[MockFunction]}
+  />
+  <button
+    onClick={[MockFunction]}
+  >
+    Generate New Colors
+  </button>
+</section>
+`;
