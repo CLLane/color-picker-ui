@@ -5,8 +5,7 @@ import { generateHexCode } from "../../utilities/helpers";
 import "./App.css";
 import ProjectForm from "../ProjectForm/ProjectForm";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
-import PaletteContainer from "../PaletteContainer/PaletteContainer";
-import AllPaletteContainer from '/Users/panko/mod-4/color-picker-ui/src/Components/AllPalleteContainer/AllPaletteContainer.js'
+import AllPaletteContainer from '../AllPalleteContainer/AllPaletteContainer.js'
 import { Route, Redirect, Link } from "react-router-dom";
 import {
   getUser,
@@ -41,7 +40,7 @@ export class App extends Component {
       user: null,
       user_projects: [],
       user_palettes: [],
-      currentProjec: null,
+      currentProject: null,
       palettes: []
     };
   }
@@ -122,7 +121,10 @@ export class App extends Component {
   handleSubmission = async (projectName, paletteName) => {
     const { colors, user, currentProject, user_projects } = this.state;
     const hex_codes = colors.map(colorObj => colorObj.color).join();
-    if (user_projects.map(project => project.name).includes(projectName)) {
+    const isPresent = user_projects.map(project => project.name).includes(projectName)
+    if (isPresent && !currentProject) {
+      this.setState({error: "All Project names must be unique!"});
+    } else  if (isPresent && currentProject !== null) {
       const newPalette = {
         project_id: currentProject.id,
         hex_codes,
@@ -142,13 +144,21 @@ export class App extends Component {
   };
 
   createProject = async projectInfo => {
-    const projectId = await postNewProject(projectInfo);
-    return projectId;
+    try {
+      const projectId = await postNewProject(projectInfo);
+      return projectId;
+    } catch (error){
+      this.setState({ error: error.message})
+    }
   };
 
   createPalette = async paletteInfo => {
-    const paletteId = await postNewPalette(paletteInfo);
-    return paletteId;
+    try {
+      const paletteId = await postNewPalette(paletteInfo);
+      return paletteId;
+    } catch(error) {
+      this.setState({error: error.message})
+    }
   };
 
   logoutUser = () => {
@@ -207,20 +217,26 @@ export class App extends Component {
 
   updateProjectName = async project => {
     const { user_projects } = this.state;
-    const newProject = await editProjectName(project);
-    const updated_projects = user_projects.map(project =>
-      project.id === newProject.id ? newProject : project
-    );
+    try {
+      const newProject = await editProjectName(project);
+      const updated_projects = user_projects.map(project =>
+        project.id === newProject.id ? newProject : project);
     this.setState({ user_projects: updated_projects });
+    } catch(error) {
+      this.setState({ error: error.message })
+    }
   };
 
   updatePaletteName = async palette => {
     const { user_palettes } = this.state;
-    const newPalette = await editPaletteName(palette);
-    const updated_palettes = user_palettes.map(palette =>
-      palette.id === newPalette.id ? newPalette : palette
-    );
-    this.setState({ user_palettes: updated_palettes });
+    try {
+      const newPalette = await editPaletteName(palette);
+      const updated_palettes = user_palettes.map(palette =>
+      palette.id === newPalette.id ? newPalette : palette);
+      this.setState({ user_palettes: updated_palettes });
+    } catch(error) {
+      this.setState({error: error.message})
+    } 
   };
 
   render() {
@@ -295,6 +311,7 @@ export class App extends Component {
                   toggleColorLock={this.toggleColorLock}
                 />
                 <ProjectForm
+                  error={error}
                   updateCurrentProject={this.updateCurrentProject}
                   currentProject={currentProject}
                   handleSubmission={this.handleSubmission}

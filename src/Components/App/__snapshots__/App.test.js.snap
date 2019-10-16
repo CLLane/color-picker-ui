@@ -18,3 +18,22 @@ exports[`App Should match the snapshot with the proper data passed in. 1`] = `
   />
 </main>
 `;
+
+exports[`App should match the snapshot when a user is present 1`] = `
+<main>
+  <Route
+    path="/login"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/palettes"
+    render={[Function]}
+  />
+</main>
+`;

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllPalette Card should match the snapshot 1`] = `
+<div
+  className="all-swatch__container"
+>
+  <p
+    className="swatch-name__paragraph"
+  >
+    Cool Colors
+  </p>
+  <div
+    className="inner-swatch__container"
+  >
+    <div
+      key="0"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "15vh",
+          "marginLeft": "2.5px",
+          "marginRight": "2.5px",
+          "marginTop": "3px",
+          "width": "15vh",
+        }
+      }
+    />
+    <div
+      key="1"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "15vh",
+          "marginLeft": "2.5px",
+          "marginRight": "2.5px",
+          "marginTop": "3px",
+          "width": "15vh",
+        }
+      }
+    />
+    <div
+      key="2"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "15vh",
+          "marginLeft": "2.5px",
+          "marginRight": "2.5px",
+          "marginTop": "3px",
+          "width": "15vh",
+        }
+      }
+    />
+    <div
+      key="3"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "15vh",
+          "marginLeft": "2.5px",
+          "marginRight": "2.5px",
+          "marginTop": "3px",
+          "width": "15vh",
+        }
+      }
+    />
+    <div
+      key="4"
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "borderRadius": "8px",
+          "height": "15vh",
+          "marginLeft": "2.5px",
+          "marginRight": "2.5px",
+          "marginTop": "3px",
+          "width": "15vh",
+        }
+      }
+    />
+  </div>
+  <Link
+    to="/"
+  >
+    <img
+      alt="expand palette"
+      className="swatch-expand__img"
+      onClick={[Function]}
+      src="expandIcon.svg"
+    />
+  </Link>
+</div>
+`;
