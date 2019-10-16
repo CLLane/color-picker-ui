@@ -15,14 +15,14 @@ export class LoginForm extends Component {
     const { clearError } = this.props;
     clearError();
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   clearInputs = () => {
     this.setState({
       email: '',
       password: ''
-    })
-  }
+    });
+  };
   
   handleLogin = e => {
     const { loginUser } = this.props;
@@ -30,13 +30,13 @@ export class LoginForm extends Component {
     e.preventDefault();
     loginUser(email, password);
     this.clearInputs();
-  }
+  };
 
   toggleNewUser = e => {
     e.preventDefault();
     const { newUser } = this.state;
-    this.setState({ newUser: !newUser })
-  }
+    this.setState({ newUser: !newUser });
+  };
 
   handleSignUp = e => {
     const { signUpUser } = this.props;
@@ -44,7 +44,7 @@ export class LoginForm extends Component {
     e.preventDefault();
     signUpUser(email, password);
     this.clearInputs();
-  }
+  };
 
   render() {
     const { email, password, newUser } = this.state;
@@ -59,8 +59,8 @@ export class LoginForm extends Component {
         { error && <p>Login failed, please re-enter information.</p> }
         {!newUser && <button onClick={this.toggleNewUser}>{<img src="https://fontmeme.com/permalink/191011/1857f34f8065b95bfa5d7c167f12c23d.png" alt="graffiti-fonts" border="0"/>}</button>}
       </form>
-    )
-  }
-}
+    );
+  };
+};
 
 export default LoginForm;
