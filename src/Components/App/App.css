@@ -1,5 +1,6 @@
 body {
-   background-image: url('https://i.pinimg.com/originals/47/cc/03/47cc0364b00fda0ebf63b2ae641c0945.png');
+  background-image: url("https://i.pinimg.com/originals/47/cc/03/47cc0364b00fda0ebf63b2ae641c0945.png");
+  background-position-x: right;
 }
 
 main {
@@ -11,6 +12,7 @@ p {
 h1 {
   margin: 0;
 }
+
 .header-container {
   display: flex;
   justify-content: center;
@@ -24,8 +26,33 @@ h1 {
 .log-out__button {
   margin-bottom: 30px;
 }
+
+.log-out__button:hover, .all-palettes__button:hover {
+  animation: shake 1.5s;
+  cursor: pointer;
+}
+
 .logo__image {
   margin-left: 245px;
   margin-right: 230px;
   margin-bottom: 30px;
+}
+
+.login-logo {
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
