@@ -1,0 +1,27 @@
+.all-swatch__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(245, 245, 245, 0.7);
+  border-radius: 8px;
+  margin: 10px;
+  height: 50vh;
+  width: 105vh;
+  box-shadow: 4px 4px 10px black;
+}
+
+.swatch-name__paragraph {
+  margin-bottom: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.inner-swatch__container {
+  display: flex;
+}
+
+.swatch-expand__img {
+  width: 50px;
+  margin-top: 10px;
+}

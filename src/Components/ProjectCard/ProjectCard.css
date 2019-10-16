@@ -1,0 +1,29 @@
+.project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px black;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 30px;
+}
+.project-card__article {
+  border-radius: 8px;
+  background: rgb(245, 245, 245, .9);
+  margin-right: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 10px black;
+}
+
+.project-edit__input {
+  background: rgb(0,0,0,0);
+  font-size: 20px;
+  font-weight: bold;
+  height: 25px;
+}
+
+.project-edit__input::placeholder {
+  color: lightgrey;
+}

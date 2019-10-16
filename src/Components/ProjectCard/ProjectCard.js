@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PaletteCard from '../PaletteCard/PaletteCard';
+import editIcon from '../../Images/editIcon.svg';
+import trashIcon from "../../Images/trashIcon.svg";
+import saveIcon from '../../Images/saveIcon.svg';
 import './ProjectCard.css';
 
 
@@ -41,12 +44,21 @@ export class ProjectCard extends Component {
     });
 
     return (
-      <article>
-        { error && <p>{error}</p> }
-        <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
-        { disabled && <p onClick={this.editName}>Edit</p> } 
-        { !disabled && <p onClick={this.saveName}>Save</p> }
-        <button onClick={() => trashProject(project.id)}>Trash Project</button>
+      <article className='project-card__article'>
+        <div className='project-card__header'>
+          { error && <p>{error}</p> }
+          { disabled && <img src={editIcon} alt='edit icon' onClick={this.editName}/> } 
+          { !disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/> }
+          <input 
+          maxlength="25" 
+          className='project-edit__input' 
+          type='text' 
+          onChange={this.handleChange} 
+          disabled={disabled} 
+          value={nameInput}
+          ></input>
+          <img src={trashIcon} alt='trashIcon' onClick={() => trashProject(project.id)}/>
+        </div>
         { paletteCards }
       </article>
     ) 

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './PaletteCard.css';
 import { Link } from 'react-router-dom';
+import editIcon from "../../Images/editIcon.svg";
+import trashIcon from "../../Images/trashIcon.svg";
+import expandIcon from '../../Images/expandIcon.svg';
+import saveIcon from '../../Images/saveIcon.svg';
 
 
 export class PaletteCard extends Component {
@@ -42,30 +46,45 @@ export class PaletteCard extends Component {
       background: hex,
       height: '5vh',
       width: '5vh',
-    };
+      borderRadius: '8px',
+      marginRight: '1.5px',
+      marginLeft: '1.5px',
+      marginTop: '2px',
+    }
     return <div style={divStyle} key={index}></div>
   });
       return (
-    <div>
-      { error && <p>{error}</p> }
-        <input type='text' onChange={this.handleChange} disabled={disabled} value={nameInput}></input>
-      { disabled && <p onClick={this.editName}>Edit</p> } 
-      { !disabled && <p onClick={this.saveName}>Save</p> }
-      <div>{swatch}</div>
-      {grabPalette && (
-        <Link to="/">
-          <button onClick={() => grabPalette(palette)}>Grab Palette</button>
-        </Link>
-      )}
-      {trashPalette && (
-        <button onClick={() => trashPalette(palette.id)}>Trash Can</button>
-      )}
-      {showPalette && (
-        <button onClick={() => showPalette(palette)}>Grab Palette</button>
-      )}
-    </div>
-  );
-  };
-};
+        <div className='palette__container'>
+          {error && <p>{error}</p>}
+          <div className='palette-name__container'>
+            <input
+              maxlength="13"
+              className='palette-edit__input'
+              type="text"
+              onChange={this.handleChange}
+              disabled={disabled}
+              value={nameInput}
+            ></input>
+            {disabled && <img src={editIcon} alt='edit palette' onClick={this.editName}/>}
+            {!disabled && <img src={saveIcon} alt='save icon' onClick={this.saveName}/>}
+          </div>
+          <div className='swatch__container'>
+            {swatch}
+            {grabPalette && (
+              <Link to="/">
+                <img src={expandIcon} alt='expand palette' onClick={() => grabPalette(palette)}/>
+              </Link>
+            )}
+              {showPalette && (
+                <img src={expandIcon} alt='expand palette' onClick={() => showPalette(palette)}/>
+              )}
+            {trashPalette && (
+              <img src={trashIcon} alt='delete palette' onClick={() => trashPalette(palette.id)}/>
+            )}
+          </div>
+        </div>
+      );
+  }
+}
 
 export default PaletteCard;

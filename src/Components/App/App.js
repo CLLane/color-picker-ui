@@ -6,6 +6,7 @@ import "./App.css";
 import ProjectForm from "../ProjectForm/ProjectForm";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
 import PaletteContainer from "../PaletteContainer/PaletteContainer";
+import AllPaletteContainer from '/Users/panko/mod-4/color-picker-ui/src/Components/AllPalleteContainer/AllPaletteContainer.js'
 import { Route, Redirect, Link } from "react-router-dom";
 import {
   getUser,
@@ -20,6 +21,9 @@ import {
   editProjectName,
   editPaletteName
 } from "../../utilities/apiCalls";
+import showAllPalettesIcon from "../../Images/showAllPalettes.svg";
+import logOutIcon from '../../Images/logoutIcon.svg';
+import generateColors from '../../Images/generateColors.svg';
 
 export class App extends Component {
   constructor() {
@@ -60,7 +64,7 @@ export class App extends Component {
     }
   };
 
-  userProjects = async (userId) => {
+  userProjects = async userId => {
     try {
       const projects = await getUserProjects(userId);
       this.setState({ user_projects: projects });
@@ -204,14 +208,18 @@ export class App extends Component {
   updateProjectName = async project => {
     const { user_projects } = this.state;
     const newProject = await editProjectName(project);
-    const updated_projects = user_projects.map(project => project.id === newProject.id ? newProject : project);
+    const updated_projects = user_projects.map(project =>
+      project.id === newProject.id ? newProject : project
+    );
     this.setState({ user_projects: updated_projects });
   };
 
   updatePaletteName = async palette => {
     const { user_palettes } = this.state;
     const newPalette = await editPaletteName(palette);
-    const updated_palettes = user_palettes.map(palette => palette.id === newPalette.id ? newPalette: palette);
+    const updated_palettes = user_palettes.map(palette =>
+      palette.id === newPalette.id ? newPalette : palette
+    );
     this.setState({ user_palettes: updated_palettes });
   };
 
@@ -258,17 +266,22 @@ export class App extends Component {
             ) : (
               <>
                 <h1>Welcome, {user.name}</h1>
-                <button onClick={this.logoutUser}>Log Out</button>
-                <Link to="/palettes">
-                  <button onClick={this.allPalettes}>
-                    Browse All Palettes
-                  </button>
-                </Link>
-                <img
-                  src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
-                  alt="graffiti-fonts"
-                  border="0"
-                />
+                <div className="header-container">
+                  <Link to="/palettes">
+                    <img
+                      src={showAllPalettesIcon}
+                      alt='show all palettes'
+                      className="all-palettes__button"
+                      onClick={this.allPalettes}/>
+                  </Link>
+                  <img
+                    className="logo__image"
+                    src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
+                    alt="graffiti-fonts"
+                    border="0"
+                  />
+                  <img src={logOutIcon} alt='log out user' className="log-out__button" onClick={this.logoutUser}/>
+                </div>
                 <ColorContainer
                   colors={colors}
                   generateColors={this.generateColors}
@@ -302,16 +315,18 @@ export class App extends Component {
             ) : (
               <>
                 <h1>Welcome, {user.name}</h1>
-                <button onClick={this.logoutUser}>Log Out</button>
+              <div className='header-container'>
                 <Link to="/">
-                  <button onClick={() => this.userProjects(user.id)}>Generate New Palette</button>
+                  <img src={generateColors} alt='generate colors' onClick={() => this.userProjects(user.id)}/>
                 </Link>
                 <img
-                  src="https://fontmeme.com/permalink/191011/5ed4a0d9bcac8d65b68b8a1346771b36.png"
+                  src="https://fontmeme.com/permalink/191016/afa0303747b5196d2cf8ec2d726fe26c.png"
                   alt="graffiti-fonts"
                   border="0"
                 />
-                <PaletteContainer
+                <img src={logOutIcon} alt='log out user' onClick={this.logoutUser}/>
+              </div>
+                <AllPaletteContainer
                   palettes={palettes}
                   grabPalette={this.grabPalette}
                 />
