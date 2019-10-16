@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Palette Container should match the snapshot, given a set of colors 1`] = `
-<section>
+<section
+  className="palette-card__container"
+>
   <PaletteCard
     grabPalette={[MockFunction]}
     key="1"

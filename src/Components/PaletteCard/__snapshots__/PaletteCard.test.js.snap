@@ -1,25 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Palette Card should match the snapshot 1`] = `
-<div>
-  <input
-    disabled={true}
-    onChange={[Function]}
-    type="text"
-    value="Cool Colors"
-  />
-  <p
-    onClick={[Function]}
+<div
+  className="palette__container"
+>
+  <div
+    className="palette-name__container"
   >
-    Edit
-  </p>
-  <div>
+    <input
+      className="palette-edit__input"
+      disabled={true}
+      maxlength="13"
+      onChange={[Function]}
+      type="text"
+      value="Cool Colors"
+    />
+    <img
+      alt="edit palette"
+      onClick={[Function]}
+      src="editIcon.svg"
+    />
+  </div>
+  <div
+    className="swatch__container"
+  >
     <div
       key="0"
       style={
         Object {
           "background": "#FFFFFF",
+          "borderRadius": "8px",
           "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
           "width": "5vh",
         }
       }
@@ -29,7 +43,11 @@ exports[`Palette Card should match the snapshot 1`] = `
       style={
         Object {
           "background": "#FFFFFF",
+          "borderRadius": "8px",
           "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
           "width": "5vh",
         }
       }
@@ -39,7 +57,11 @@ exports[`Palette Card should match the snapshot 1`] = `
       style={
         Object {
           "background": "#FFFFFF",
+          "borderRadius": "8px",
           "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
           "width": "5vh",
         }
       }
@@ -49,7 +71,11 @@ exports[`Palette Card should match the snapshot 1`] = `
       style={
         Object {
           "background": "#FFFFFF",
+          "borderRadius": "8px",
           "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
           "width": "5vh",
         }
       }
@@ -59,30 +85,34 @@ exports[`Palette Card should match the snapshot 1`] = `
       style={
         Object {
           "background": "#FFFFFF",
+          "borderRadius": "8px",
           "height": "5vh",
+          "marginLeft": "1.5px",
+          "marginRight": "1.5px",
+          "marginTop": "2px",
           "width": "5vh",
         }
       }
     />
-  </div>
-  <Link
-    to="/"
-  >
-    <button
-      onClick={[Function]}
+    <Link
+      to="/"
     >
-      Grab Palette
-    </button>
-  </Link>
-  <button
-    onClick={[Function]}
-  >
-    Trash Can
-  </button>
-  <button
-    onClick={[Function]}
-  >
-    Grab Palette
-  </button>
+      <img
+        alt="expand palette"
+        onClick={[Function]}
+        src="expandIcon.svg"
+      />
+    </Link>
+    <img
+      alt="expand palette"
+      onClick={[Function]}
+      src="expandIcon.svg"
+    />
+    <img
+      alt="delete palette"
+      onClick={[Function]}
+      src="trashIcon.svg"
+    />
+  </div>
 </div>
 `;

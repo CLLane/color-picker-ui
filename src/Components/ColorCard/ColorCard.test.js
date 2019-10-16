@@ -37,7 +37,7 @@ describe('Color Card', () => {
   });
 
   it('call the toggle lock function when the button is clicked', () => {
-    wrapper.find('button').simulate('click');
+    wrapper.find('img').simulate('click');
     expect(toggleColorMock).toHaveBeenCalledWith(0);
   });
 });

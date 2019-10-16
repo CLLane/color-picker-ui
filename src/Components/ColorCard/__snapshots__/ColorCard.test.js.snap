@@ -5,15 +5,26 @@ exports[`Color Card should match the snapshot when the card is locked 1`] = `
   style={
     Object {
       "background": "#000000",
+      "borderRadius": "8px",
+      "boxShadow": "4px 4px 20px black",
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "30vh",
+      "justifyContent": "flex-end",
+      "marginLeft": "5px",
+      "marginRight": "5px",
+      "padding": "20px",
+      "width": "30vh",
     }
   }
 >
-  <button
+  <img
+    alt="unlocked"
     onClick={[Function]}
-  >
-    Unlock
-  </button>
+    src="lockedIcon.svg"
+  />
   <input
+    className="hex-code__input"
     disabled={true}
     placeholder="#000000"
     type="text"
@@ -26,15 +37,26 @@ exports[`Color Card should match the snapshot when the card is not locked 1`] = 
   style={
     Object {
       "background": "#FFFFFF",
+      "borderRadius": "8px",
+      "boxShadow": "4px 4px 20px black",
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "30vh",
+      "justifyContent": "flex-end",
+      "marginLeft": "5px",
+      "marginRight": "5px",
+      "padding": "20px",
+      "width": "30vh",
     }
   }
 >
-  <button
+  <img
+    alt="unlocked"
     onClick={[Function]}
-  >
-    Lock
-  </button>
+    src="unlockedIcon.svg"
+  />
   <input
+    className="hex-code__input"
     disabled={true}
     placeholder="#FFFFFF"
     type="text"

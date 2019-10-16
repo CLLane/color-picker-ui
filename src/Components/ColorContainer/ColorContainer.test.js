@@ -30,7 +30,7 @@ describe('Color Container', () => {
   });
 
   it('should call the generate colors function when clicked', () => {
-    wrapper.find('button').simulate('click');
+    wrapper.find('.generate-color__container').simulate('click');
     expect(mockGenerateColors).toHaveBeenCalled();
   });
 });
