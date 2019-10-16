@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import './PaletteContainer.css';
-import PaletteContainer from './PaletteContainer';
+import './AllPaletteContainer.css';
+import AllPaletteContainer from './AllPaletteContainer';
 
-describe('Palette Container', () => {
+describe('AllPalette Container', () => {
   let wrapper;
   let mockPalettes;
   let mockGrabPalette;
@@ -33,7 +33,7 @@ describe('Palette Container', () => {
     ];
     mockGrabPalette = jest.fn();
     mockUpdatePaletteName = jest.fn();
-    wrapper = shallow(<PaletteContainer 
+    wrapper = shallow(<AllPaletteContainer 
       palettes={mockPalettes}
       grabPalette={mockGrabPalette}
       updatePaletteName={mockUpdatePaletteName}
