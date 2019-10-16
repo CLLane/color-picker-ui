@@ -40,10 +40,14 @@ export class ProjectForm extends Component {
     e.preventDefault();
     const { projectName, paletteName, select } = this.state;
     const { handleSubmission } = this.props;
-    if (select !== "new-project") {
-      await handleSubmission(select, paletteName);
-    } else {
-      await handleSubmission(projectName, paletteName);
+    try {
+      if (select !== "new-project") {
+        await handleSubmission(select, paletteName);
+      } else {
+        await handleSubmission(projectName, paletteName);
+      } 
+    } catch (error) {
+      console.log(error)
     }
     this.setState({ projectName: "", paletteName: "" });
   };

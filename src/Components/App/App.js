@@ -144,13 +144,21 @@ export class App extends Component {
   };
 
   createProject = async projectInfo => {
-    const projectId = await postNewProject(projectInfo);
-    return projectId;
+    try {
+      const projectId = await postNewProject(projectInfo);
+      return projectId;
+    } catch (error){
+      this.setState({ error: error.message})
+    }
   };
 
   createPalette = async paletteInfo => {
-    const paletteId = await postNewPalette(paletteInfo);
-    return paletteId;
+    try {
+      const paletteId = await postNewPalette(paletteInfo);
+      return paletteId;
+    } catch(error) {
+      this.setState({error: error.message})
+    }
   };
 
   logoutUser = () => {
@@ -209,20 +217,26 @@ export class App extends Component {
 
   updateProjectName = async project => {
     const { user_projects } = this.state;
-    const newProject = await editProjectName(project);
-    const updated_projects = user_projects.map(project =>
-      project.id === newProject.id ? newProject : project
-    );
+    try {
+      const newProject = await editProjectName(project);
+      const updated_projects = user_projects.map(project =>
+        project.id === newProject.id ? newProject : project);
     this.setState({ user_projects: updated_projects });
+    } catch(error) {
+      this.setState({ error: error.message })
+    }
   };
 
   updatePaletteName = async palette => {
     const { user_palettes } = this.state;
-    const newPalette = await editPaletteName(palette);
-    const updated_palettes = user_palettes.map(palette =>
-      palette.id === newPalette.id ? newPalette : palette
-    );
-    this.setState({ user_palettes: updated_palettes });
+    try {
+      const newPalette = await editPaletteName(palette);
+      const updated_palettes = user_palettes.map(palette =>
+      palette.id === newPalette.id ? newPalette : palette);
+      this.setState({ user_palettes: updated_palettes });
+    } catch(error) {
+      this.setState({error: error.message})
+    } 
   };
 
   render() {
