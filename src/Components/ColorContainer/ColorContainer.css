@@ -18,6 +18,17 @@
   width: 200px;
 }
 
+
+.generate-color__container:hover {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: rgba(97, 218, 240, 0.8);
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px black;
+  width: 200px;
+  cursor: pointer;
+}
+
 .color-container {
   display: flex;
   flex-direction: column;
