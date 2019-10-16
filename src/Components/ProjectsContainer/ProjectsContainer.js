@@ -9,7 +9,7 @@ export const ProjectsContainer = ({ projects, palettes, trashPalette, trashProje
   })
 
   return (
-    <section>
+    <section className='project-container__section'>
       {projectCards}
     </section>
   )

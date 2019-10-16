@@ -1,0 +1,6 @@
+.palette-card__container {
+  display: flex;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
