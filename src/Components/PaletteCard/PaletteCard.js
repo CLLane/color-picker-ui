@@ -11,7 +11,7 @@ export class PaletteCard extends Component {
       disabled: true,
       error: ''
     }
-  }
+  };
 
   editName = () => {
     this.setState({ disabled: false });
@@ -29,22 +29,22 @@ export class PaletteCard extends Component {
   };
 
   handleChange = (e) => {
-    this.setState({ nameInput: e.target.value})
+    this.setState({ nameInput: e.target.value});
   };
 
 
   render() {
   const { palette, trashPalette, grabPalette, showPalette } = this.props;
   const { nameInput, disabled, error } = this.state;
-  const colors = Object.values(palette).slice(2)
+  const colors = Object.values(palette).slice(3);
   const swatch = colors.map((hex, index) => {
     const divStyle = {
       background: hex,
       height: '5vh',
       width: '5vh',
-    }
+    };
     return <div style={divStyle} key={index}></div>
-  })
+  });
       return (
     <div>
       { error && <p>{error}</p> }
@@ -65,7 +65,7 @@ export class PaletteCard extends Component {
       )}
     </div>
   );
-  }
-}
+  };
+};
 
 export default PaletteCard;
