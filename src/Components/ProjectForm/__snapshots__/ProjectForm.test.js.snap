@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should match the snapshot 1`] = `
+<div
+  className="project-form__container"
+>
+  <form
+    className="project__form"
+  >
+    <select
+      className="project-name__dropdown"
+      onChange={[Function]}
+      value="new-project"
+    >
+      <option
+        key="0"
+        value="Cool Project"
+      >
+        Cool Project
+      </option>
+      <option
+        value="new-project"
+      >
+        Create New Project
+      </option>
+    </select>
+    <input
+      className="project-name__input"
+      disabled={true}
+      maxlength="25"
+      name="projectName"
+      onChange={[Function]}
+      placeholder="Cool Project"
+      type="text"
+      value=""
+    />
+    <input
+      className="palette-name__input"
+      maxlength="13"
+      name="paletteName"
+      onChange={[Function]}
+      placeholder="Enter Palette Name"
+      type="text"
+      value=""
+    />
+    <img
+      alt="disable save palette"
+      src="disableNewPalette.svg"
+    />
+  </form>
+</div>
+`;
