@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette Container should match the snapshot, given a set of colors 1`] = `
+<section>
+  <PaletteCard
+    grabPalette={[MockFunction]}
+    key="1"
+    palette={
+      Object {
+        "colorFive": "#FFFFFF",
+        "colorFour": "#FFFFFF",
+        "colorOne": "#FFFFFF",
+        "colorThree": "#FFFFFF",
+        "colorTwo": "#FFFFFF",
+        "id": 1,
+        "name": "Cool Colors",
+        "project_id": "12345",
+      }
+    }
+    updatePaletteName={[MockFunction]}
+  />
+  <PaletteCard
+    grabPalette={[MockFunction]}
+    key="2"
+    palette={
+      Object {
+        "colorFive": "#FFFFFF",
+        "colorFour": "#FFFFFF",
+        "colorOne": "#FFFFFF",
+        "colorThree": "#FFFFFF",
+        "colorTwo": "#FFFFFF",
+        "id": 2,
+        "name": "Warm Colors",
+        "project_id": "12345",
+      }
+    }
+    updatePaletteName={[MockFunction]}
+  />
+</section>
+`;
