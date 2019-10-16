@@ -1,4 +1,3 @@
-
 import {
   getUser,
   getUserProjects,
@@ -89,7 +88,7 @@ describe("getUserPalettes", () => {
       });
     });
   });
-  
+ 
   it('should get an array of palettes, that are cleaned', () => {
     let dirtyPalettes = [{
       id: 2,
@@ -133,6 +132,7 @@ describe("getUserPalettes", () => {
     
     expect(getUserPalettes(2)).resolves.toEqual(expected);
   });
+
   
   it("should call fetch with the correct URL for palettes", () => {
     getUserPalettes(1);
