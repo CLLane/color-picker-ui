@@ -145,7 +145,7 @@ describe('App', () => {
     const url = 'http://localhost:3001/palettes'
     await wrapper.instance().allPalettes();
     expect(window.fetch).toHaveBeenCalledWith(url);
-  });
+  })
 
   it('should update the current colors array, given a palette', () => {
     const mockPalette = {

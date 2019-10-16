@@ -6,7 +6,7 @@ import "./App.css";
 import ProjectForm from "../ProjectForm/ProjectForm";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
 import PaletteContainer from "../PaletteContainer/PaletteContainer";
-import AllPaletteContainer from '/Users/panko/mod-4/color-picker-ui/src/Components/AllPalleteContainer/AllPaletteContainer.js'
+import AllPaletteContainer from '../AllPalleteContainer/AllPaletteContainer.js'
 import { Route, Redirect, Link } from "react-router-dom";
 import {
   getUser,
