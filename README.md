@@ -2,7 +2,7 @@
 
 A random hex-code generator that allows a user to create projects and save palettes to projects. 
 
-- Data is requested from [color-picker-api](https://github.com/djavanm/color-picker-api), and deployed to [heroku](https://color-picker-api.herokuapp.com/).
+- Data is requested from [color-picker-api](https://github.com/djavanm/color-picker-api), which is deployed to [heroku](https://color-picker-api.herokuapp.com/).
 - Created with React and React Route, utilizing jest and enzyme for testing. 
 
 The app allows user to login or create a new account. Once logged in the user will be able to generate random hexcodes and in the event they find one they like there is an option to save a palette. If the user chooses to save a palette they must first create a project and once a project is created the palette will be saved, this can happen simultaneously. A user can create as many palettes as they would like and assign them to new or existing projects. The users projects and palettes. The user can utilze a button to logout, see all palettes, and lock hex-codes they like.
