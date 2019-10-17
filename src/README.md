@@ -22,6 +22,9 @@ The app allows user to login or create a new account. Once logged in the user wi
     3. npm start
     4. Visit: http://localhost:3000/
 
+  - Testing
+    - npm test
+
 ## Developers
  - Djavan Munroe [@CLLane](https://github.com/djavanm)
  - Chris Lane [@djavanm](https://github.com/CLLane)
